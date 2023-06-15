@@ -20,7 +20,7 @@ function App() {
       <button onClick={() => {Onclick()}}>
         {IsAuth? "Authenticated": "Not Authenticated"}
       </button>
-      <h1>Try going to http://localhost:3000/home/ when not Authenticated</h1>
+      <h1>try going to http://localhost:3000/home/ when not Authenticated</h1>
       {/* Public routes */}
       <Routes>
         <Route path='' element={<h1>Login By Harsh</h1>} />
