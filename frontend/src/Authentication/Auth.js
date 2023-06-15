@@ -12,9 +12,6 @@ export function Auth({ children, isAuth }) {
 
     CheckAuth();
 
-    // useEffect(() => {
-    //     IsAuth = true;
-    // },[]);
 
     console.log(IsAuth)
 
