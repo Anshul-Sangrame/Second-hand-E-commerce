@@ -3,6 +3,7 @@ import './App.css';
 import {  Route, Routes } from 'react-router-dom';
 import { Auth } from './Authentication/Auth';
 import Home from './Components/home';
+import Login from './Components/Login';
 
 function App() {
   const getDeafaultValue = () => {
@@ -24,7 +25,7 @@ function App() {
       <h1>try going to http://localhost:3000/home/ when not Authenticated</h1>
       {/* Public routes */}
       <Routes>
-        <Route path='' element={<h1>Login By Harsh</h1>} />
+        <Route path='' element={<Login />} />
         <Route path='signUp' element={<h1>SignUp By Muskan</h1>} />
       </Routes>
 
