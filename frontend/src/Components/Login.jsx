@@ -2,6 +2,7 @@ import React from "react";
 import profile from "./images/loginp.png";
 import user from "./images/loginu.png";
 import password from "./images/loginpa.png";
+import './Style/login.css'
 
 function Login(){
   return (
