@@ -1,12 +1,13 @@
 import { Fragment, useState } from 'react';
 import './App.css';
-import { Link, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import { Auth } from './Authentication/Auth';
+import Home from './Components/home';
 
 function App() {
   const getDeafaultValue = () => {
     var item = localStorage.getItem('IsAuth');
-    if (item == 'true') return true;
+    if (item === 'true') return true;
     return false;
   }
   const [IsAuth,setIsAuth] = useState(getDeafaultValue())
@@ -30,7 +31,7 @@ function App() {
       {/* Private routes */}
       <Auth isAuth={IsAuth}>
         <Routes>
-          <Route path='home' element={<h1>Home</h1>} />
+          <Route path='home' element={<Home />} />
         </Routes>
       </Auth>
     </Fragment>
