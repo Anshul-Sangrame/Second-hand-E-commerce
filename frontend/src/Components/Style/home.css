@@ -1,0 +1,29 @@
+
+.home h1 {
+    color: red;
+    animation-duration: 5s;
+    animation-name: home-color-change;
+    animation-iteration-count: infinite;
+}
+
+@keyframes home-color-change {
+    from {
+        color: red;
+    }
+
+    25% {
+        color: green;
+    }
+
+    50% {
+        color: blue;
+    }
+
+    75% {
+        color: green;
+    }
+
+    to {
+        color: red;
+    }
+}
