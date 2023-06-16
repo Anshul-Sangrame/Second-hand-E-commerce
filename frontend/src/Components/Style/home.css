@@ -2,11 +2,11 @@
 .home h1 {
     color: red;
     animation-duration: 5s;
-    animation-name: login-color-change;
+    animation-name: home-color-change;
     animation-iteration-count: infinite;
 }
 
-@keyframes login-color-change {
+@keyframes home-color-change {
     from {
         color: red;
     }
