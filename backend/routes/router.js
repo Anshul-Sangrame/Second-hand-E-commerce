@@ -19,7 +19,6 @@ router.get('/verify', (req,res) => {
             return res.json({id: req.user_id});
         }
         console.log("unauthorized")
-        if (req.unsafe) return res.status(401).send("unauthorized: token changed")
         return res.status(401).send("unauthorized")
     } catch (err) {
         console.error(err.message);
