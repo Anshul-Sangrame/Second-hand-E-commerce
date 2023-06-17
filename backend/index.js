@@ -1,14 +1,16 @@
-const http = require('http');
+import express from 'express'
+import cors from 'cors'
+import router from './routes/router.js'
 
-const hostname = '127.0.0.1';
-const port = 5000;
+const app = express()
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello world');
-});
+// Middlewares
+app.use(cors())
+app.use(express.json())
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+// user Router
+app.use(router)
+
+app.listen(5000, () => {
+  console.log("Backend is running at port 5000")
+})

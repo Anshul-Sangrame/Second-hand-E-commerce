@@ -1,41 +1,23 @@
-import { Fragment, useState } from 'react';
 import './App.css';
-import {  Route, Routes } from 'react-router-dom';
-import { Auth } from './Authentication/Auth';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Components/home';
 import Login from './Components/Login';
+import { Public,Private } from './Authentication/Auth';
 
 function App() {
-  const getDeafaultValue = () => {
-    var item = localStorage.getItem('IsAuth');
-    if (item === 'true') return true;
-    return false;
-  }
-  const [IsAuth,setIsAuth] = useState(getDeafaultValue())
-  const Onclick = () => {
-    localStorage.setItem('IsAuth',!IsAuth);
-    setIsAuth(!IsAuth);
-  }
-  
   return (
-    <Fragment>
-      <button onClick={() => {Onclick()}}>
-        {IsAuth? "Authenticated": "Not Authenticated"}
-      </button>
-      <h1>try going to http://localhost:3000/home/ when not Authenticated</h1>
-      {/* Public routes */}
       <Routes>
-        <Route path='' element={<Login />} />
-        <Route path='signUp' element={<h1>SignUp By Muskan</h1>} />
-      </Routes>
+        {/* Public routes */}
+        <Route element={<Public />} >
+          <Route index element={<Login />} />
+          <Route path='signUp' element={<h1>SignUp By Muskan</h1>} />
+        </Route>
 
-      {/* Private routes */}
-      <Auth isAuth={IsAuth}>
-        <Routes>
+        {/* Private routes */}
+        <Route element={<Private />}>
           <Route path='home' element={<Home />} />
-        </Routes>
-      </Auth>
-    </Fragment>
+        </Route>
+      </Routes>
   );
 }
 

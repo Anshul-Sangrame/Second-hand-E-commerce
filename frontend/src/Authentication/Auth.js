@@ -1,33 +1,56 @@
-import { createContext,useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet, Navigate } from "react-router-dom";
 
-const AuthToolsContext = createContext(null)
+const CheckAuth = async (setIsAuth) => {
+    try {
+        const token = sessionStorage.getItem('token');
 
-export function Auth({ children, isAuth }) {
-    var IsAuth = false;
+        if (!token) {
+            setIsAuth(false);
+            return;
+        }
 
-    const CheckAuth =  () => {
-        IsAuth = isAuth;
+        const res = await fetch('http://localhost:5000/verify', {
+            method: 'GET',
+            headers: { token: token }
+        });
+
+        if (res.ok) {
+            setIsAuth(true);
+            return;
+        }
+
+        setIsAuth(false);
+        return;
+    } catch (err) {
+        console.error(err.message);
     }
-
-    CheckAuth();
-
-
-    console.log(IsAuth)
-
-    if (!IsAuth) 
-    {
-        return <Navigate to='/' />
-    }
-
-    return (
-        <AuthToolsContext.Provider value={IsAuth}>
-            {children}
-        </AuthToolsContext.Provider>
-    )
 }
 
-export function GetTools() 
-{
-    return useContext(AuthToolsContext)
+export function Public() {
+    const [IsAuth, setIsAuth] = useState(false);
+
+    useEffect(() => {
+        CheckAuth(setIsAuth)
+    }, [setIsAuth])
+
+    if (!IsAuth) {
+        return <Outlet />;
+    }
+
+    return <Navigate to="/home" />;
+}
+
+export function Private() {
+    const [IsAuth, setIsAuth] = useState(true);
+
+    useEffect(() => {
+        CheckAuth(setIsAuth)
+    }, [setIsAuth])
+
+    if (!IsAuth) {
+        return <Navigate to='/' />;
+    }
+
+    return <Outlet />;
 }
