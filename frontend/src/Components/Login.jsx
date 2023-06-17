@@ -69,7 +69,7 @@ function Login() {
             <button onClick={handleSubmit} className="login-button">Login</button>
           </div>
           <p className="link">
-            <a href="#">Forgot password ?</a> Or<Link to='/signUp'>Sign Up</Link>
+            <Link to='/'>Forgot password ?</Link> Or<Link to='/signUp'>Sign Up</Link>
           </p>
         </div>
       </div>
