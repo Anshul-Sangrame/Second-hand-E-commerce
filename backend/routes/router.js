@@ -1,6 +1,7 @@
 import { Router } from "express";
 import VerifyToken from "../controllers/verifyToken.js";
 import login from "../controllers/login.js";
+import register from "../controllers/register.js";
 import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
 
