@@ -8,12 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/register", async(req,res) => {
-    
+exports.Register =async function register(req,res) {
     const { firstName,lastName, email, password,mobileNumber,DOB,street_address,city,region,city_pincode } = req.body;  
     let Query2, Query1 ;
     let hashedPassword = await bcrypt.hash(password,10);
-   
     Query1=  await pool.query("select email from user where email=$1 ",[email]);
 
     if(!Query1.rows.length)
@@ -22,11 +20,5 @@ app.post("/register", async(req,res) => {
     );
     
     }
-})
-
-// app.listen(port,hostname, () => {
-//     console.log(`Here we go, Engines started at ${port}.`);
-
-// })
-
+}
 
