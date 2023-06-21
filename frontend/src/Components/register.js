@@ -1,27 +1,29 @@
 import {useState} from 'react';
  
 export default function Register (){
-    const [firstName,setfirstName] = useState("");
-    const [lastName,setlastName] = useState("");
-    const [email,setemail] = useState("");
-    const [password,setpassword] = useState("");
-    const [password2,setpassword2] = useState("");
-    const [mobileNumber,setMobileNumber] = useState("");
-    const [DOB,setDOB] = useState("");
-    const [city,setcity] = useState("");
-    const [street_address,setstreet_address] = useState("");
-    const [city_pincode,setcity_pincode] = useState("");
-    const [region,setregion] = useState("");
+  
+    const [CustomerDetails,setCustomerDetails] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        password2: "",
+        mobileNumber: "",
+        DOB: "",
+        city: "",
+        street_address: "",
+        region: ""
+    })
     
     function submitForm(e)  {
       e.preventDefault();
-      var body ={firstName,lastName,email,password,mobileNumber,DOB,city,street_address,city_pincode,region};          
+      var body ={CustomerDetails};          
 
-    if(password!==password2)
+    if(CustomerDetails.password!==CustomerDetails.password2)
       alert(" password doesn't match with confirm password");
-    if(password.length<6)
+    if(CustomerDetails.password.length<6)
      alert("password length must be atleast 6 letters" );
-    if(mobileNumber.length!==10)
+    if(CustomerDetails.mobileNumber.length!==10)
         alert("Mobile Number is invalid!" );
     else{
     fetch("http://localhost:5000/register",{
@@ -40,13 +42,14 @@ export default function Register (){
     <div>
     <h2>register please!!!</h2>
     <form className='Registration' onSubmit={submitForm} >
+   {/* e.target.name depends on the order . */}
     <div>
         <input
             type="text"
             id="firstName"
             name="firstName"
             placeholder="firstName"
-            onChange={(e) => setfirstName(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -56,7 +59,7 @@ export default function Register (){
             id="lastName"
             name="lastName"
             placeholder="lastName"
-            onChange={(e)=> setlastName(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -66,8 +69,7 @@ export default function Register (){
             id="email"
             name="email"
             placeholder="Email"
-            onChange={(e)=> setemail(e.target.value)}
-            required
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
         />
     </div>
     <div>
@@ -76,7 +78,7 @@ export default function Register (){
             id="password"
             name="password"
             placeholder="Password"
-            onChange={(e) => setpassword(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -86,8 +88,7 @@ export default function Register (){
             id="password2"
             name="password2"
             placeholder="Confirm password"
-            onChange={(e) => setpassword2(e.target.value)}
-           
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}     
             required
         />
     </div>
@@ -97,7 +98,7 @@ export default function Register (){
             id="mobileNumber"
             name="mobileNumber"
             placeholder="mobileNumber"
-            onChange={(e) => setMobileNumber(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -107,7 +108,7 @@ export default function Register (){
             id="DOB"
             name="DOB"
             placeholder="Date Of Birth"
-            onChange={(e) => setDOB(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -117,7 +118,7 @@ export default function Register (){
             id="street_address"
             name="street_address"
             placeholder="Street_address"
-            onChange={(e) => setstreet_address(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -127,7 +128,7 @@ export default function Register (){
             id="city"
             name="city"
             placeholder="City"
-            onChange={(e) => setcity(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -137,7 +138,7 @@ export default function Register (){
             id="region"
             name="region"
             placeholder="Region"
-            onChange={(e) => setregion(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
@@ -147,7 +148,7 @@ export default function Register (){
             id="city_pincode"
             name="city_pincode"
             placeholder="City_pincode"
-            onChange={(e) => setcity_pincode(e.target.value)}
+            onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             required
         />
     </div>
