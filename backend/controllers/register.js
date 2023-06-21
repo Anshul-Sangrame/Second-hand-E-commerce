@@ -1,8 +1,6 @@
 const express = require('express');
 const pool = require('./dbConfig');
 const bcrypt = require("bcrypt");
-const hostname = '127.0.0.1';
-const port = process.env.PORT||5000;
 const cors=require("cors");
 const app = express();
 app.use(cors());
