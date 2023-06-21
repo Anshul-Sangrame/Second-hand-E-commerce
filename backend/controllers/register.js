@@ -1,10 +1,6 @@
 const express = require('express');
 const pool = require('./dbConfig');
 const bcrypt = require("bcrypt");
-const cors=require("cors");
-const app = express();
-app.use(cors());
-app.use(express.json());
 
 exports.Register =async function register(req,res) {
     const { firstName,lastName, email, password,mobileNumber,DOB,street_address,city,region,city_pincode } = req.body;  
