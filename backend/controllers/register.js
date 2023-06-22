@@ -1,8 +1,8 @@
 import express from 'express';
-import pool from './dbConfig';
+import pool from './dbConfig.js';
 import bcrypt from "bcrypt";
 
-exports.Register =async function register(req,res) {
+  export default async function register(req,res) {
  const { CustomerDetails } = req.body;  
     console.log(CustomerDetails.lastName);
     let Query2, Query1;
@@ -13,4 +13,3 @@ exports.Register =async function register(req,res) {
         "INSERT INTO user values(default,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",[CustomerDetails.firstName,CustomerDetails.lastName, CustomerDetails.email, hashedPassword,CustomerDetails.mobileNumber,CustomerDetails.DOB,CustomerDetails.street_address,CustomerDetails.city,CustomerDetails.region,CustomerDetails.city_pincode]
     );}
 }
-
