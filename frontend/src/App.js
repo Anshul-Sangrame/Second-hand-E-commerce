@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/home';
 import Login from './Components/Login';
+import Register from './Components/register';
 import { Public,Private } from './Authentication/Auth';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
         {/* Public routes */}
         <Route element={<Public />} >
           <Route index element={<Login />} />
-          <Route path='signUp' element={<h1>SignUp By Muskan</h1>} />
+          <Route path='signUp' element={<Register />} />
         </Route>
 
         {/* Private routes */}
