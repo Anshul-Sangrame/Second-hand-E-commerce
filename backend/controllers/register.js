@@ -1,5 +1,5 @@
 import express from 'express';
-import pool from './dbConfig.js';
+import pool from '../database/db.js'
 import bcrypt from "bcrypt";
 
   export default async function register(req,res) {
