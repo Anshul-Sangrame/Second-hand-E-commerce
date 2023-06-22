@@ -1,6 +1,6 @@
-const express = require('express');
-const pool = require('./dbConfig');
-const bcrypt = require("bcrypt");
+import express from 'express';
+import pool from './dbConfig';
+import bcrypt from "bcrypt";
 
 exports.Register =async function register(req,res) {
  const { CustomerDetails } = req.body;  
