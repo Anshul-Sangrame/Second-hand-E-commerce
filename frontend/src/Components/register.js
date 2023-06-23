@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { Link } from 'react-router-dom';
  
 export default function Register (){
   
@@ -155,7 +156,7 @@ export default function Register (){
     <div>
         <input type="submit" value="Register" />
     </div>
-    <a href="/login">Already registered? Login here</a>
+    <Link to="/">Already registered? Login here</Link>
     </form>
 </div>
 )
