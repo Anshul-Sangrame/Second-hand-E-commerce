@@ -16,7 +16,7 @@ export default function VerifyToken(req,res,next)
         const token = req.header("token");
         if (!token)
         {
-            next();
+            // next();
             return;
         }
 
@@ -24,9 +24,12 @@ export default function VerifyToken(req,res,next)
 
         req.user_id = payload.user;
 
-        next();
+        // next();
     } catch (err) {
         console.error(err.message);
+    }
+    finally {
+        console.log("token verification done");
         next();
     }
 }

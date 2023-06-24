@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [cred, setCred] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
@@ -39,7 +39,7 @@ function Login() {
       }
       else {
         const errType = await res.json()
-        console.log(errType.msg)
+        alert(errType.msg);
       }
     } catch (err) {
       console.error(err.message)
@@ -47,7 +47,7 @@ function Login() {
   }
 
   return (
-    <div className="main">
+    <div className="main"> 
       <div className="sub-main">
         <div>
           <div className="imgs">
@@ -60,7 +60,7 @@ function Login() {
             <h1>Login to your account</h1>
             <div>
               <img src={userImg} alt="user" className="user" />
-              <input type="text" onChange={handleChange} value={cred.username} name="username" placeholder="user-name" className="name" />
+              <input type="text" onChange={handleChange} value={cred.email} name="email" placeholder="email" className="name" />
             </div>
             <div>
               <img src={passwordImg} alt="password" className="password" />
