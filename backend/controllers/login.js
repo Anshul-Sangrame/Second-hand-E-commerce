@@ -19,18 +19,18 @@ export default async function login(req,res)
         req.body = {username,password}
         */
 
-        const {username:userName, password:password} = req.body;
+        const {email:email, password:password} = req.body;
         const preparedStmt = {
             text: "Select id,password from users \
-                    Where username = $1",
-            values: [userName]
+                    Where email = $1",
+            values: [email]
         }
 
         const result = await pool.query(preparedStmt);
 
         if (result.rowCount === 0)
         {
-            res.status(401).json({msg: "wrong username"});
+            res.status(401).json({msg: "wrong email"});
             return;
         }
 
