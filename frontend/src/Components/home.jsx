@@ -37,17 +37,15 @@ function ItemProfile({ details }) {
     return (
         <div className='item-profile'>
             <img src={details.src} alt={details.title} />
-            {/* <div className='text'> */}
             <h3>{details.title}</h3>
             <h2>&#8377; {details.cost}</h2>
-            <div><FontAwesomeIcon icon={faEye} /> {details.views}</div>
+            <div><FontAwesomeIcon icon={faEye} beat/> {details.views}</div>
             {/* <Ratting rate={details.rating} /> */}
             <div>
                 <div className='tag'>
                     {details.tag}
                 </div>
             </div>
-            {/* </div> */}
         </div>
     )
 }
