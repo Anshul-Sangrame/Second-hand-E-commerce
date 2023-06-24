@@ -1,29 +1,55 @@
-
-.home h1 {
-    color: red;
-    animation-duration: 5s;
-    animation-name: home-color-change;
-    animation-iteration-count: infinite;
+* {
+    margin: 0;
+    padding: 0;
+}
+.home 
+{
+    margin: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    grid-auto-rows: 300px;
+    grid-gap: 20px;
 }
 
-@keyframes home-color-change {
-    from {
-        color: red;
-    }
+.home .item-profile
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-style: solid;
+    border-color: rgb(187, 186, 186);
+    border-width: 1px;
+    border-radius: 1%;
+    padding: 5px;
+}
 
-    25% {
-        color: green;
-    }
 
-    50% {
-        color: blue;
-    }
+.home .item-profile .text
+{
+    color: rgb(155, 149, 149);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
-    75% {
-        color: green;
-    }
+.home .item-profile .stars
+{
+    color: gold;
+    margin-bottom: 10px;
+}
 
-    to {
-        color: red;
-    }
+.home .item-profile .tag
+{
+    display: inline-block;
+    background-color: lightgray;
+    color: rgb(113, 108, 108);
+    border-radius: 10%;
+    padding: 5px;
+}
+
+.item-profile img
+{
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
 }
