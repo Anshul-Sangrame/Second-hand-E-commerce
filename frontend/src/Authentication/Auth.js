@@ -20,6 +20,7 @@ const CheckAuth = async (setIsAuth) => {
             return;
         }
 
+        sessionStorage.removeItem('token');
         setIsAuth(false);
         return;
     } catch (err) {
