@@ -26,6 +26,16 @@ router.get('/verify', (req,res) => {
         console.error(err.message);
     }
 })
+// homepage
+router.get('/', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, tag, title, cost, rating, img_url FROM products ORDER BY rating DESC LIMIT 10');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
 
 // testing
 
