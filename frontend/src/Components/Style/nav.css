@@ -1,0 +1,51 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+    background-size: 180% 180%;
+    animation: gradient-animation 30s ease infinite;
+    overflow: hidden;
+  }
+  
+  .navlogo {
+    font-style: big-caslon;
+    font-size: 1.6rem;
+    margin-right: 20px;
+  }
+  
+  .navprofile {
+    font-style: sans-serif;
+    font-size: 1.6rem;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+  }
+  
+  .search-bar input[type="text"] {
+    padding: 13px;
+    border: none;
+    width: 500px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  .search-bar button {
+    padding: 13px 15px;
+    background-color: #666;
+    border: none;
+    border-radius: 10px;
+    color: #e7d3d3;
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background-color: #888;
+  }
