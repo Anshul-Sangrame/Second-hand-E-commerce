@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 .home {
     margin: 30px;
     display: grid;
@@ -22,6 +17,14 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 5px;
+    transition-property: scale,border-color;
+    transition-duration: 0.5s;
+}
+
+.home .item-profile:hover
+{
+    scale: 1.05;
+    border-color: rgb(91, 88, 88);
 }
 
 

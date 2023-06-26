@@ -1,16 +1,6 @@
 import pool from '../database/db.js'
-import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
+import jwtGenerator from './token_generator.js'
 import bcrypt from 'bcrypt'
-dotenv.config();
-
-function jwtGenerator(userid)
-{
-    const payload = {
-        user: userid
-    }
-    return jwt.sign(payload,process.env.SECRET,{ expiresIn: '1hr'})
-}
 
 export default async function login(req,res)
 {

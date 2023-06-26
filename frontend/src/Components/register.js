@@ -19,8 +19,8 @@ export default function Register() {
     const nav = useNavigate();
 
     async function submitForm(e) {
+        e.preventDefault();
         try {
-            e.preventDefault();
             var body = { CustomerDetails };
 
             if (CustomerDetails.password !== CustomerDetails.password2)
@@ -38,7 +38,10 @@ export default function Register() {
                 const parsedData = await response.json();
                 if (response.ok)
                 {
-                    return nav('/');
+                    console.log(parsedData.token)
+                    sessionStorage.setItem('token',parsedData.token)
+                    nav('/home');
+                    return;
                 }
                 alert(parsedData.msg);
             }

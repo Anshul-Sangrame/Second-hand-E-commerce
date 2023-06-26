@@ -4,6 +4,7 @@ import Home from './Components/home';
 import Login from './Components/Login';
 import Register from './Components/register';
 import { Public,Private } from './Authentication/Auth';
+import Product from './Components/productDetails';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         {/* Private routes */}
         <Route element={<Private />}>
           <Route path='home' element={<Home />} />
+          <Route path='product/:id' element={<Product />} />
         </Route>
       </Routes>
   );

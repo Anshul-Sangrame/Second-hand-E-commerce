@@ -1,7 +1,6 @@
-CREATE TABLE IF NOT EXISTS ratings(
+CREATE TABLE IF NOT EXISTS views(
    user_id INT REFERENCES users(id),
    product_id INT REFERENCES products(id),
-   score INT CHECK( 0<= score and score <= 5),
    PRIMARY KEY(user_id,product_id)
 );
 

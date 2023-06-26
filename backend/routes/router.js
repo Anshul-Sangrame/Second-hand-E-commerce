@@ -1,9 +1,10 @@
 import { Router } from "express";
 import VerifyToken from "../controllers/verifyToken.js";
 import login from "../controllers/login.js";
-import register from  "../controllers/register.js";
+import register from "../controllers/register.js";
 import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
+import productDetails from "../controllers/productDetails.js";
 
 const router = Router()
 
@@ -13,12 +14,12 @@ router.use(VerifyToken);
 // routes
 router.post('/login', login)
 router.post('/register', register)
-router.post('/register',async(req,res) => {register.Register(req,res) });
-router.get('/verify', (req,res) => {
+router.post('/register', async (req, res) => { register.Register(req, res) });
+router.get('/verify', (req, res) => {
     try {
-        
+
         if (req.user_id) {
-            return res.json({id: req.user_id});
+            return res.json({ id: req.user_id });
         }
         console.log("unauthorized")
         return res.status(401).send("unauthorized")
@@ -26,6 +27,9 @@ router.get('/verify', (req,res) => {
         console.error(err.message);
     }
 })
+
+router.get('/productDetails/:id', productDetails);
+
 // homepage
 router.get('/', async (req, res) => {
   try {
@@ -44,27 +48,29 @@ router.get('/', async (req, res) => {
 
 // testing
 
-router.post('/test', async (req, res) => {
+router.get('/hashAll', async (req, res) => {
     try {
-        /*
-        req.body = {name,email,username,password}
-        */
-        const {name,email,username,password} = req.body;
-        const salt = await bcrypt.genSalt(10);
-        const Hashedpassword = await bcrypt.hash(password,salt)
-        const preparedStmt = {
-            text: "Insert into users(name,email,username,password) values($1,$2,$3,$4) returning *",
-            values: [name,email,username,Hashedpassword]
+        let preparedStmt = {
+            text: "SELECT id,password from users"
         }
+
         const result = await pool.query(preparedStmt);
 
-        res.json(result.rows[0]);
+        for (let item of result.rows) {
+            const salt = await bcrypt.genSalt(10);
+            const Hashedpassword = await bcrypt.hash(item.password, salt)
+            preparedStmt = {
+                text: "UPDATE users \
+                        SET password = $1 \
+                        WHERE id=$2",
+                values: [Hashedpassword, item.id]
+            }
+            await pool.query(preparedStmt);
+        }
+        res.json(result.rows);
     } catch (err) {
         console.error(err.message);
-        if (err.message === 'duplicate key value violates unique constraint "users_name_key"')
-        {
-            res.status(401).send("duplicate");
-        }
+        res.status(500).send("server error");
     }
 })
 
