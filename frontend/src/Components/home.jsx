@@ -1,6 +1,7 @@
 import './Style/home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faStarHalfStroke, faEye } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 const details = {
     id: 23,
@@ -34,12 +35,17 @@ function Ratting({ rate }) {
 }
 
 function ItemProfile({ details }) {
+    const nav = useNavigate()
+
+    const handleClick = () => {
+        nav(`/product/${details.id}`);
+    };
     return (
-        <div className='item-profile'>
+        <div className='item-profile' onClick={handleClick}>
             <img src={details.src} alt={details.title} />
             <h3>{details.title}</h3>
             <h2>&#8377; {details.cost}</h2>
-            <div><FontAwesomeIcon icon={faEye} beat/> {details.views}</div>
+            <div><FontAwesomeIcon icon={faEye} beat /> {details.views}</div>
             {/* <Ratting rate={details.rating} /> */}
             <div>
                 <div className='tag'>

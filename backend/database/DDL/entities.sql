@@ -20,6 +20,6 @@ CREATE TABLE IF NOT EXISTS products(
     cost INTEGER,
     image_url VARCHAR(255),
     qty INTEGER CHECK(qty >= 0),
-    rating NUMERIC(3) DEFAULT 0.00 CHECK(rating BETWEEN 0.00 and 5.00),
+    views INT DEFAULT 0,
     owner_id INT REFERENCES users(id)
 );

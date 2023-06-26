@@ -6,6 +6,7 @@ const CheckAuth = async (setIsAuth) => {
         const token = sessionStorage.getItem('token');
 
         if (!token) {
+            console.log("here verified");
             setIsAuth(false);
             return;
         }
@@ -16,6 +17,7 @@ const CheckAuth = async (setIsAuth) => {
         });
 
         if (res.ok) {
+            
             setIsAuth(true);
             return;
         }
@@ -38,7 +40,7 @@ export function Public() {
     if (!IsAuth) {
         return <Outlet />;
     }
-
+    
     return <Navigate to="/home" />;
 }
 
@@ -52,6 +54,6 @@ export function Private() {
     if (!IsAuth) {
         return <Navigate to='/' />;
     }
-
+    console.log("nav to home done");
     return <Outlet />;
 }
