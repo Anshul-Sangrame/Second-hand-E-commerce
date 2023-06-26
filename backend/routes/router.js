@@ -29,9 +29,14 @@ router.get('/verify', (req,res) => {
 // homepage
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query('SELECT id, tag, title, cost, rating, img_url FROM products ORDER BY rating DESC LIMIT 10');
-    res.json(result.rows);
-  } catch (error) {
+      if(req.user_id) {
+   const result = await pool.query('SELECT id, tag, title, cost, rating, img_url FROM products ORDER BY rating DESC LIMIT 10');
+   return  res.json(result.rows);
+      }
+    console.log("unauthorized")
+    return res.status(401).send("unauthorized")
+      
+  } catch (err) {
     console.error('Error executing query', error);
     res.status(500).json({ error: 'An error occurred' });
   }
