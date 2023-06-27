@@ -1,0 +1,104 @@
+.sell {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sell-card {
+  background-color: #f6eded;
+  border-radius: 40px;
+  box-shadow: 0 2px 4px rgba(147, 139, 139, 0.1);
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.sellmain {
+  text-align: center;
+  padding: 40px;
+}
+
+.selltitle input[type="text"],
+.selldescription input[type="text"],
+.selltags input[type="text"],
+.sellimage input[type="text"],
+.sellprice input[type="text"],
+.sellquantity input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.selltitle input[type="text"] {
+  height: 30px;
+}
+
+.selldescription input[type="text"] {
+  height: 150px;
+}
+
+.selltags input[type="text"],
+.sellimage input[type="text"],
+.sellprice input[type="text"],
+.sellquantity input[type="text"] {
+  width: 20%;
+}
+
+.selltags button[type="submit"] {
+  background-color: #f0f0f0;
+  color: #7f7777;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sellprice .rupee-symbol {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .sell-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .sell-card > div {
+    flex: 1 1 100%;
+    margin-right: 20px;
+  }
+
+  .selltitle,
+  .selldescription,
+  .selltags,
+  .sellimage,
+  .sellprice,
+  .sellquantity {
+    margin-bottom: 20px;
+  }
+
+  .selltitle,
+  .selltags {
+    flex-basis: 100%;
+  }
+
+  .selltitle input[type="text"],
+  .selltags input[type="text"] {
+    width: 100%;
+  }
+
+  .sellimage,
+  .sellprice,
+  .sellquantity {
+    flex-basis: calc(50% - 10px);
+  }
+
+  .sellimage {
+    text-align: center;
+  }
+}
