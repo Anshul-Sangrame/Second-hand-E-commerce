@@ -31,19 +31,18 @@ router.get('/verify', (req, res) => {
 router.get('/productDetails/:id', productDetails);
 
 // homepage
-router.get('/', async (req, res) => {
-  try {
-      if(req.user_id) {
-   const result = await pool.query('SELECT id, tag, title, cost, rating, img_url FROM products ORDER BY rating DESC LIMIT 10');
-   return  res.json(result.rows);
-      }
-    console.log("unauthorized")
-    return res.status(401).send("unauthorized")
-      
-  } catch (err) {
-    console.error('Error executing query', error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
+router.get('/home', async (req, res) => {
+    try {
+        if (req.user_id) {
+            const result = await pool.query('SELECT id, tag, title, cost, views, image_url, qty FROM products ORDER BY views DESC LIMIT 10');
+            return res.json({data: result.rows});
+        }
+        return res.json(null);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
 });
 
 // testing

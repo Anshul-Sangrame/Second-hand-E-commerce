@@ -4,15 +4,15 @@ export default async function productDetails(req,res)
 {
     try {
 
-        // if (!req.user_id)
-        // {
-        //     return res.json({data:null})
-        // }
+        if (!req.user_id)
+        {
+            return res.json({data:null})
+        }
         const id = req.params.id
         const preparedStmt = {
-            text: "SELECT * \
-                    FROM products \
-                    WHERE id=$1",
+            text: "SELECT P.*, U.first_name, U.last_name, U.address, U.city, U.state, U.phone \
+                    FROM products AS P JOIN users AS U on P.owner_id = U.id \
+                    WHERE  P.id=$1",
             values: [id]
         }
         const result = await pool.query(preparedStmt);
