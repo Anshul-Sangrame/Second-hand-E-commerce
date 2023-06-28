@@ -3,7 +3,7 @@ import pool from "../database/db.js";
 export default async function sell(req, res) {
   const { title, description, tags, cost, qty } = req.body;
 
-  const item = {
+  const products = {
     title,
     description,
     tags,
@@ -12,8 +12,8 @@ export default async function sell(req, res) {
   };
 
   try {
-    const query = 'INSERT INTO items (title, description, tags, cost, qty) VALUES ($1, $2, $3, $4, $5)';
-    const values = [item.title, item.description, item.tags, item.cost, item.qty];
+    const query = 'INSERT INTO products (title, description, tags, cost, qty) VALUES ($1, $2, $3, $4, $5)';
+    const values = [products.title, products.description, products.tags, products.cost, products.qty];
 
     const client = await pool.connect();
     try {
