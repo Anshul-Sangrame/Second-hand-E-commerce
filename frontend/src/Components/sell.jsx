@@ -1,7 +1,7 @@
 import React from "react";
 import AddPhotoSection from "./image";
 import "./sellstyle.css";
-function sell(){
+function Sell(){
     return <div className="sell">
         <div className="sell-card">
         <div className="sellmain">
@@ -47,4 +47,4 @@ function sell(){
         </div>
     </div>
 }
-export default sell;
+export default Sell;
