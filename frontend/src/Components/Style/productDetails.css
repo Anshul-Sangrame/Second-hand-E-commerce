@@ -171,6 +171,7 @@
     .product-details .photo-bg
     {
         padding: 0;
+        width: 100%;
     }
 
     .product-details .photo-bg > img
