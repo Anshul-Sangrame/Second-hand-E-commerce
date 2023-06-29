@@ -37,7 +37,10 @@ export default function Product() {
     return (
         <div className="product-details">
             <div className="photo">
-                <img src={data.image_url} alt={data.title} />
+                <div className="photo-bg">
+                    <img src={data.image_url} alt={data.title} />
+                    {/* <h1>f</h1> */}
+                </div>
             </div>
             <div className="details">
                 <div className="head">
@@ -45,21 +48,28 @@ export default function Product() {
                         <FontAwesomeIcon icon={faHashtag} /> {data.id}
                     </div>
                     <h1>{data.title}</h1>
-                    <div className="tag">{data.tag}</div>
-                    <h2><FontAwesomeIcon icon={faIndianRupeeSign} /> {data.cost}</h2>
-                    <FontAwesomeIcon icon={faEye} /> {data.views}
-                </div>
-                <div className="addToCart">
-                    <div className="qty">
-                        <strong>Available: </strong>{data.qty}
+                    <div>
+                        <FontAwesomeIcon icon={faEye} /> {data.views}
                     </div>
-                    <button>Add to Cart</button>
-                    <button>Buy Now</button>
+                    <div className="tag">{data.tag}</div>
+                    <div className="btns">
+                        <button>Add to Cart</button>
+                        <button>Buy Now</button>
+                    </div>
+                    <hr />
+                    <h1><FontAwesomeIcon icon={faIndianRupeeSign} /> {data.cost}</h1>
+
                 </div>
+
+                <div className="qty">
+                    <strong>Available: </strong>{data.qty}
+                </div>
+                <hr />
                 <div className="desc">
                     <h2>Description</h2>
                     <p>{data.description}</p>
                 </div>
+                <hr />
                 <div className="contact">
                     <h2>Contact</h2>
                     <p>{data.first_name} {data.last_name}</p>
