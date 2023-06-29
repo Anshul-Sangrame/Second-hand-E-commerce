@@ -3,24 +3,27 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Components/home';
 import Login from './Components/Login';
 import Register from './Components/register';
-import { Public,Private } from './Authentication/Auth';
+import { Public, Private } from './Authentication/Auth';
 import Product from './Components/productDetails';
+import Navbar from './Components/nav';
 
 function App() {
   return (
-      <Routes>
-        {/* Public routes */}
-        <Route element={<Public />} >
-          <Route index element={<Login />} />
-          <Route path='signUp' element={<Register />} />
-        </Route>
+    <Routes>
+      {/* Public routes */}
+      <Route element={<Public />} >
+        <Route index element={<Login />} />
+        <Route path='signUp' element={<Register />} />
+      </Route>
 
-        {/* Private routes */}
-        <Route element={<Private />}>
+      {/* Private routes */}
+      <Route element={<Private />}>
+        <Route element={<Navbar />} >
           <Route path='home' element={<Home />} />
           <Route path='product/:id' element={<Product />} />
         </Route>
-      </Routes>
+      </Route>
+    </Routes>
   );
 }
 
