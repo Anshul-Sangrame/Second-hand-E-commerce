@@ -166,6 +166,7 @@
     {
         /* space */
         padding: 0;
+        width: 70%;
     }
     .product-details .photo-bg
     {
@@ -175,12 +176,16 @@
     .product-details .photo-bg > img
     {
         /* size */
-        width: 50vw;
+        width: 100%;
         aspect-ratio: 1/1;
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 500px) {
+    .product-details .photo
+    {
+        width: auto;
+    }
     .product-details .photo-bg > img
     {
         /* size */
