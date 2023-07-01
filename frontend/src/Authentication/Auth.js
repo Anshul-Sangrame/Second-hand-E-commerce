@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,createContext, useContext } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 
 const CheckAuth = async (setIsAuth) => {
@@ -6,7 +6,6 @@ const CheckAuth = async (setIsAuth) => {
         const token = sessionStorage.getItem('token');
 
         if (!token) {
-            console.log("here verified");
             setIsAuth(false);
             return;
         }
@@ -54,6 +53,6 @@ export function Private() {
     if (!IsAuth) {
         return <Navigate to='/' />;
     }
-    console.log("nav to home done");
+    console.log("Private rendered");
     return <Outlet />;
 }

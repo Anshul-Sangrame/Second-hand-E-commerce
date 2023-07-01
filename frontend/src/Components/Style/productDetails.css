@@ -32,7 +32,12 @@
     padding: 8rem 0;
 
     /* color */
-    background-color: #E8E8E8;
+    background-color: #F4F4F2;
+
+    /* border */
+    border-style: solid;
+    border-color: #BBBFCA;
+    border-width: 0.5px;
 }
 
 

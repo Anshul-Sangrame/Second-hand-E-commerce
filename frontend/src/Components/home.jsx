@@ -52,10 +52,10 @@ export default function Home() {
 
             if (res.ok) {
                 const body = await res.json();
-                setData(body.data);
+                if(body)setData(body.data);
             }
         } catch (err) {
-            console.log(err.message);
+            console.log("Error: " + err.message);
         }
     };
 
@@ -65,6 +65,7 @@ export default function Home() {
 
     if (!data) return <></>
 
+    console.log("home redered");
     return (
         <div className="home">
             {data.map(item => <ItemProfile key={item.id} details={item} />)}

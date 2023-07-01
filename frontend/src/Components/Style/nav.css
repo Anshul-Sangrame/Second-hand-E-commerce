@@ -8,18 +8,18 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+    /* background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172); */
+    background-color: #112D4E;
     background-size: 180% 180%;
     animation: gradient-animation 30s ease infinite;
     overflow: hidden;
-    position: sticky;
-    top: 0;
   }
   
   .navlogo {
     font-style: big-caslon;
     font-size: 1.6rem;
     margin-right: 20px;
+    color: white;
   }
   
   .navprofile {
@@ -27,6 +27,7 @@
     font-size: 1.6rem;
     margin-left: 20px;
     cursor: pointer;
+    color: white;
   }
   
   .search-bar {

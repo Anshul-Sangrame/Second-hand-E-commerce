@@ -6,6 +6,7 @@ import Register from './Components/register';
 import { Public, Private } from './Authentication/Auth';
 import Product from './Components/productDetails';
 import Navbar from './Components/nav';
+import SideBar from './Components/sidebar';
 
 function App() {
   return (
@@ -19,8 +20,10 @@ function App() {
       {/* Private routes */}
       <Route element={<Private />}>
         <Route element={<Navbar />} >
-          <Route path='home' element={<Home />} />
-          <Route path='product/:id' element={<Product />} />
+          <Route element={<SideBar />}>
+            <Route path='home' element={<Home />} />
+            <Route path='product/:id' element={<Product />} />
+          </Route>
         </Route>
       </Route>
     </Routes>
