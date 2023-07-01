@@ -1,0 +1,76 @@
+.side-bar-container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.side-bar-container > *
+{
+    flex-grow: 6;
+    flex-shrink: 6;
+    flex-basis: 0;
+}
+
+.side-bar
+{
+    /* position */
+    position: sticky;
+    top: 0;
+
+    /* display */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: center;
+
+    /* space */
+    margin-right: 5rem;
+
+    /* size */
+    min-height: 100vh;
+
+    /* flex-self */
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 15rem;
+
+    /* color */
+    background-color: #112D4E;
+
+    /* border */
+    border-style: solid;
+    border-color: #BBBFCA;
+    border-width: 0 0.5px 0 0;
+}
+
+.side-bar .content
+{
+    /* space */
+    padding-top: 5rem;
+
+}
+
+.side-bar button
+{
+    /* font */
+    font-size: 2em;
+
+    /* color */
+    color: white;
+    /* background-color: #F4F4F2; */
+    background-color: inherit;
+
+    /* border */
+    border: none;
+
+    /* size */
+    width: 100%;
+}
+
+.side-bar button:hover
+{
+    /* color */
+    color: orange;
+}
