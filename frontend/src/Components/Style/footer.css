@@ -1,0 +1,28 @@
+footer{
+    width:100vw;
+    height:18vh;
+    display:flex;
+    flex-direction:row;
+    color:#ffffff;
+    background-color: #112D4E;
+ }
+ footer ul{
+     display:flex;
+     flex-direction:column;
+     width:30vw;  
+     list-style: none;;
+     
+ }
+ footer li{
+     padding: 3px 30px;
+     font-size:0.5em;
+     /* padding-bottom:4px; */
+     font-weight: medium;
+  
+ }
+ 
+ .first, .second, .third{
+     color:#eb57b7;
+     font-weight:700;
+    
+ }
