@@ -1,0 +1,94 @@
+*{
+    margin:0;
+    padding:0;
+}
+.EditProfile header{
+ height:10vh;
+ border-style: solid;
+ border-width:2px;
+ border-color:rgb(170, 167, 167);
+}
+.EditProfile .editProfile-main{
+   border-style:solid;
+    border-color:rgb(170, 167, 167);
+    border-width:2px;
+    margin-left:15vw;
+    width:85vw;
+    height:110vh;
+}
+.EditProfile h2{
+    margin-left:10vw;
+    margin-top:10vh;
+    margin-bottom: 10vh;
+}
+.EditProfile img{
+    width:35%;
+    height:30%;
+    float:right;
+    margin-right: 10vw;
+}
+
+.EditProfile label{
+    display:block;  
+    font-size:75%;
+    font-weight:500px;
+}
+
+.EditProfile form {
+    display:flex;
+    flex-direction:column;
+    /* clear:right; */
+    align-items: center;
+
+}
+
+.EditProfile input{
+    height:3.0vh;
+    width:30vw;
+    margin-bottom:3vh;
+    margin-left:1vw;
+    padding:2px;
+    border-radius:2px;
+    border-width:0.5px;
+    /* background-color: #fff; */
+  
+    
+}
+
+.EditProfile #street_address, #city, #region{
+    margin:0px;
+}
+
+.EditProfile .Address{
+    margin-left:20vw; 
+    margin-top:2vh;
+    width:50vw;
+  
+   /* font-size:75%;
+    
+    height:auto;
+    width:30vw;
+    /* height:2vh; 
+    padding:1vh; */
+    /* background-color: rgb(231, 227, 227); */
+    text-align: center;
+    border-radius:3px;
+    border-style:solid;
+    border-width:1px;
+    border-color:rgb(170, 167, 167);
+    
+}  
+
+.EditProfile .Address span{
+    display:inline-block;
+    height:4vh;
+    font-weight:bold;
+}
+.EditProfile button{
+    width:10vw;
+    height:5vh;
+    margin-left:20vw;
+    margin-top:5vh;
+    background-color: rgb(92, 92, 230);
+    border-radius:5px;
+}
