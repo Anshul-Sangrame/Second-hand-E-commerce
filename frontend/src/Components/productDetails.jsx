@@ -34,7 +34,7 @@ export default function Product() {
 
     if (!data) return <></>;
 
-    console.log("Product details redered");
+
     return (
         <div className="product-details">
             <div className="photo">
