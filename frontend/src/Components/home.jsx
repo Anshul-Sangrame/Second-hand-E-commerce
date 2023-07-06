@@ -2,7 +2,7 @@ import './Style/home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react' 
 
 // const details = {
 //     id: 23,
@@ -52,7 +52,7 @@ export default function Home() {
 
             if (res.ok) {
                 const body = await res.json();
-                if(body)setData(body.data);
+                if (body) setData(body.data);
             }
         } catch (err) {
             console.log("Error: " + err.message);
@@ -65,7 +65,7 @@ export default function Home() {
 
     if (!data) return <></>
 
-    console.log("home redered");
+    
     return (
         <div className="home">
             {data.map(item => <ItemProfile key={item.id} details={item} />)}

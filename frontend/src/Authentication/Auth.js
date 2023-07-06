@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 
 const CheckAuth = async (setIsAuth) => {
     try {
@@ -31,10 +31,11 @@ const CheckAuth = async (setIsAuth) => {
 
 export function Public() {
     const [IsAuth, setIsAuth] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         CheckAuth(setIsAuth)
-    }, [setIsAuth])
+    }, [location])
 
     if (!IsAuth) {
         return <Outlet />;
@@ -45,14 +46,15 @@ export function Public() {
 
 export function Private() {
     const [IsAuth, setIsAuth] = useState(true);
+    const location = useLocation();
 
     useEffect(() => {
         CheckAuth(setIsAuth)
-    }, [setIsAuth])
+    },[location])
 
     if (!IsAuth) {
         return <Navigate to='/' />;
     }
-    console.log("Private rendered");
+
     return <Outlet />;
 }
