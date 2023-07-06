@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import profile from "./images/loginp.png";
-import userImg from "./images/loginu.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUser,faLock } from "@fortawesome/free-solid-svg-icons";
-import passwordImg from "./images/loginpa.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser,faLock } from "@fortawesome/free-solid-svg-icons";
 import './Style/login.css'
 import { Link, useNavigate } from "react-router-dom";
 
@@ -47,31 +45,32 @@ function Login() {
       console.error(err.message)
     }
   }
+
   return (
-    <div className="main">
+    <div className="main"> 
       <div className="sub-main">
         <div>
           <div className="imgs">
             <div className="container-image">
-              <img src={profile} alt ="profile" className="profile"/>
+              <img src={profile} alt="profile" className="profile" />
 
             </div>
           </div>
           <div>
             <h1>Login to your account</h1>
-            <div>
-              <img src={user} alt="user" className="user"/>
-              <input type="text" placeholder="user-name" className="name"/>
+            <div className="loginuser">
+             <FontAwesomeIcon icon={faUser} size="2xl" style={{color: "#888a85",}} /> 
+              <input type="text" onChange={handleChange} value={cred.email} name="email" placeholder="E-mail" className="name" />
             </div>
-            <div>
-              <img src={password} alt="password" className="password"/>
-              <input type="text" placeholder="Password" className="name"/>
+            <div className="loginlock">
+               <FontAwesomeIcon icon={faLock} size="2xl" style={{color: "#888a85",}} /> 
+              <input type="password" onChange={handleChange} value={cred.password} name="password" placeholder="Password" className="name" />
             </div>
-            <button className="login-button">Login</button>
+            <button onClick={handleSubmit} className="login-button">Login</button>
           </div>
           <p className="link">
-              <a href="#" className="l">Forgot password ?</a> Or<a href="#" className="l">Sign Up</a>
-            </p>
+            <Link to='/'>Forgot password ?</Link>or<Link to='/signUp' className="linkb"> Sign Up</Link>
+          </p>
         </div>
       </div>
     </div>
