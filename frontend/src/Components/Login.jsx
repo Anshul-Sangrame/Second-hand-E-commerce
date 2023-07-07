@@ -24,7 +24,7 @@ function Login() {
     e.preventDefault();
     try {
       const body = cred
-      const res = await fetch('http://localhost:5000/login', {
+      const res = await fetch(`${process.env.REACT_APP_baseURL}/login`, {
         method: 'post',
         body: JSON.stringify(body),
         headers: {

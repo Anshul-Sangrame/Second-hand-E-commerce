@@ -25,16 +25,20 @@
     align-items: stretch;
     text-align: center;
 
+    /* content */
+    overflow: hidden;
+
     /* space */
     margin-right: 5rem;
 
     /* size */
     min-height: 100vh;
+    min-width: 0;
 
     /* flex-self */
     flex-grow: 0;
     flex-shrink: 1;
-    flex-basis: 15rem;
+    flex-basis: 10rem;
 
     /* color */
     background-color: #112D4E;

@@ -21,6 +21,10 @@
     margin-right: 20px;
     color: white;
   }
+  .navlogo:hover
+  {
+    color: orange;
+  }
   
   .navprofile {
     font-style: sans-serif;
@@ -40,7 +44,7 @@
   .search-bar input[type="text"] {
     padding: 13px;
     border: none;
-    width: 500px;
+    /* width: 500px; */
     border-radius: 10px;
     margin-right: 20px;
   }

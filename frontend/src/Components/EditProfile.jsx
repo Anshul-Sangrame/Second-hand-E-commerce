@@ -14,7 +14,7 @@ export default  function  EditProfile (){
         const  userDetails = async() => {
             try{
         const token = sessionStorage.getItem('token')
-        const response = await fetch("http://localhost:5000/editprofile",{
+        const response = await fetch(`${process.env.REACT_APP_baseURL}/editprofile`,{
         method: "GET",
         headers: {
             "Content-Type" : "application/json",
