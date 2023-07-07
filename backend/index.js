@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import router from './routes/router.js'
+import 'dotenv/config'
 
 const app = express()
 
@@ -11,6 +12,6 @@ app.use(express.json())
 // user Router
 app.use(router)
 
-app.listen(5000, () => {
-  console.log("Backend is running at port 5000")
+app.listen(process.env.PORT, () => {
+  console.log(`Backend is running at port ${process.env.PORT}`)
 })
