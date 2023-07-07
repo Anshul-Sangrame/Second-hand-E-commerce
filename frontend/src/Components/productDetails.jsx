@@ -12,7 +12,7 @@ export default function Product() {
         const getData = async () => {
             try {
                 const token = sessionStorage.getItem('token');
-                const res = await fetch(`http://localhost:5000/productDetails/${id}`, {
+                const res = await fetch(`${process.env.REACT_APP_baseURL}/productDetails/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

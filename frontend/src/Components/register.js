@@ -30,7 +30,7 @@ export default function Register() {
             if (CustomerDetails.mobileNumber.length !== 10)
                 alert("Mobile Number is invalid!");
             else {
-                const response = await fetch("http://localhost:5000/register", {
+                const response = await fetch(`${process.env.REACT_APP_baseURL}/register`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(body)

@@ -42,7 +42,7 @@ export default function Home() {
     async function getData() {
         try {
             const token = sessionStorage.getItem('token')
-            const res = await fetch('http://localhost:5000/home', {
+            const res = await fetch(`${process.env.REACT_APP_baseURL}/home`, {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
