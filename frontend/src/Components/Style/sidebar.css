@@ -104,6 +104,9 @@
 
         /* transition */
         transition: flex-basis 1s ease;
+
+        /* flex-self */
+        flex-basis: auto;
     }
 
     .side-bar .content {
