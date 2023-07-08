@@ -10,11 +10,13 @@ export default function VerifyToken(req,res,next)
         const payload = jwt.verify(token,process.env.SECRET);
 
         req.user_id = payload.user;
+
+        next();
     } catch (err) {
         console.error(err.message);
+        res.status(401).send("Invalid token");
     }
     finally {
         console.log("token verification done");
-        next();
     }
 }
