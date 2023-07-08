@@ -1,50 +1,47 @@
 import pool from "../database/db.js";
+import multer from 'multer';
+import cloudinary from 'cloudinary').v2;
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads');
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  },
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: 'dewdm6hiz',
+  api_key: '687984954841828',
+  api_secret: 'OPHyVY8I2N21CLcjG-tsRFAU7Cg'
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({});//it handles the file handling //it is necessary to include this 
 
 app.use(express.json());
 app.use(express.static('public'));
 
-app.post('/api/upload', upload.single('file'), async (req, res) => {
+export default async function sell(req, res) {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file selected' });
     }
 
-    // Save the image file to the database or cloud storage
-    // Here, we'll just log the file details
-    console.log('File uploaded:', req.file);
+    // Upload the image to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
 
-    res.json({ message: 'File uploaded successfully' });
-  } catch (error) {
-    console.error('Error uploading file:', error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-});
+    // Retrieve the Cloudinary image URL
+    const imageUrl = result.secure_url;
 
-app.post('/api/sell', upload.single('file'), async (req, res) => {
-  const { title, description, tags, cost, qty } = req.body;
+    // Saving  the image URL to our database
+    // Performing the necessary operations to store the imageUrl in our database
 
-  const product = {
-    title,
-    description,
-    tags,
-    cost,
-    qty,
-    image_url: req.file ? req.file.filename : null,
-  };
+    const { title, description, tags, cost, qty } = req.body;
 
-  try {
+    const product = {
+      title,
+      description,
+      tags,
+      cost,
+      qty,
+      image_url: imageUrl, // Use the image URL received from the frontend
+    };
+
+    // Save the product details to your database
+    // ...
     const query =
       'INSERT INTO products (title, description, tags, cost, qty, image_url) VALUES ($1, $2, $3, $4, $5, $6)';
     const values = [product.title, product.description, product.tags, product.cost, product.qty, product.image_url];
@@ -57,4 +54,4 @@ app.post('/api/sell', upload.single('file'), async (req, res) => {
     console.error('Error inserting product:', error);
     res.status(500).json({ error: 'An error occurred' });
   }
-});
+}

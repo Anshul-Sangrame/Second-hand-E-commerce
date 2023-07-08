@@ -17,18 +17,27 @@ const AddPhotoSection = () => {
 
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('upload_preset', 'secondhandecommerce'); 
 
     try {
-      const response = await axios.post('/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      console.log(response.data);
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/dewdm6hiz/image/upload', 
+        formData
+      );
+
+      const imageUrl = response.data.secure_url;
+      console.log(imageUrl);
+
+      // Save the imageUrl in your database using an API call or other suitable method
+
       setFile(null); // Reset the selected file after successful upload
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleRemove = () => {
+    setFile(null);
   };
 
   const addImageTextStyle = {
@@ -36,6 +45,7 @@ const AddPhotoSection = () => {
     flexDirection: 'column',
     alignItems: 'center',
     color: '#999',
+    cursor: 'pointer',
   };
 
   return (
@@ -45,11 +55,14 @@ const AddPhotoSection = () => {
       </div>
       <div>
         {file ? (
-          <img
-            style={{ maxWidth: '100%', maxHeight: '100%' }}
-            src={URL.createObjectURL(file)}
-            alt="Preview"
-          />
+          <div>
+            <img
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
+              src={URL.createObjectURL(file)}
+              alt="Preview"
+            />
+            <button onClick={handleRemove}>Remove</button>
+          </div>
         ) : (
           <div style={addImageTextStyle}>
             <p>Drag and drop an image here, or click to select a file</p>
@@ -62,4 +75,3 @@ const AddPhotoSection = () => {
 };
 
 export default AddPhotoSection;
-
