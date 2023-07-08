@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate, useOutletContext, matchPath } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useOutletContext} from "react-router-dom";
 import './Style/sidebar.css';
 
 function HighlightedButton({ myPath, children }) {
