@@ -1,42 +1,41 @@
-import { Outlet, useNavigate, useOutletContext } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useOutletContext, matchPath } from "react-router-dom";
 import './Style/sidebar.css';
 
-export default function SideBar() {
+function HighlightedButton({ myPath, children }) {
+    const loc = useLocation();
     const nav = useNavigate()
-    const showSB = useOutletContext();
-
-    const hiddenStyle = {
-        sideBar: {
-            minWidth: 0,
-            flexBasis: 0,
-            margin: 0,
-            overflow: "hidden",
-            transition: "all 1s ease"
-        }
-    };
-
-    const showStyle = {
-        sideBar: {
-            minWidth: 0,
-            overflow: "hidden",
-            transition: "all 1s ease"
-        }
+    const path = loc.pathname;
+    let match = false;
+    if (path === myPath || path === (myPath + "/") || (path + "/") === myPath) {
+        match = true;
     }
 
+    const styleColor = { color: 'orange' };
     const handleClick = function () {
-        nav('/home');
+        nav(`${myPath}`);
     };
 
+    return (
+        <button
+            onClick={handleClick}
+            style={(match ? styleColor : {})}
+        >
+            {children}
+        </button>
+    )
+}
+
+export default function SideBar() {
+    const showSB = useOutletContext();
 
     return (
         <div className="side-bar-container">
-            {
-                <div className="side-bar" style={showSB ? showStyle.sideBar : hiddenStyle.sideBar}>
-                    <div className="content">
-                        <button onClick={handleClick}>Home</button>
-                    </div>
+            <div className={"side-bar" + (!showSB ? " invisible" : "")} >
+                <div className="content">
+                    <HighlightedButton myPath="/home">Home</HighlightedButton>
+                    <HighlightedButton myPath="/editProfile">Profile</HighlightedButton>
                 </div>
-            }
+            </div>
             <Outlet />
         </div>
     )

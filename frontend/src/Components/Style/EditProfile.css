@@ -2,6 +2,11 @@
     margin:0;
     padding:0;
 }
+.EditProfile
+{
+    display: flex;
+    justify-content: center;
+}
 .EditProfile header{
  height:10vh;
  border-style: solid;
@@ -12,7 +17,7 @@
    border-style:solid;
     border-color:rgb(170, 167, 167);
     border-width:2px;
-    margin-left:15vw;
+    /* margin-left:15vw; */
     width:85vw;
     height:110vh;
 }
