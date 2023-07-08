@@ -9,7 +9,7 @@ cloudinary.config({
   api_secret: 'OPHyVY8I2N21CLcjG-tsRFAU7Cg'
 });
 
-const upload = multer({});
+const upload = multer({});//it handles the file handling //it is necessary to include this 
 
 app.use(express.json());
 app.use(express.static('public'));
