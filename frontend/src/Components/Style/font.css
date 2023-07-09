@@ -1,0 +1,6 @@
+body
+{
+    --my-serif-font: 'Vollkorn SC', serif;
+    --my-sans-serif-font: 'Lato', sans-serif;
+    font-family: var(--my-sans-serif-font);
+}
