@@ -29,7 +29,6 @@
 
     /* size */
     min-height: 100vh;
-    min-width: 0;
 
     /* flex-self */
     flex-grow: 0;
@@ -65,7 +64,7 @@
 
 .side-bar button {
     /* font */
-    font-size: 2em;
+    font-size: 2rem;
 
     /* color */
     color: white;
@@ -106,12 +105,12 @@
         transition: flex-basis 1s ease;
 
         /* flex-self */
-        flex-basis: auto;
+        flex-basis: var(--height);
     }
 
     .side-bar .content {
         /* space */
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }

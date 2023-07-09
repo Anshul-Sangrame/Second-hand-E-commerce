@@ -6,6 +6,7 @@ import { EditProfileGet, EditProfilePost } from "../controllers/EditProfile.js";
 import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
 import productDetails from "../controllers/productDetails.js";
+import myProducts from "../controllers/myProduct.js";
 
 const router = Router();
 export const publicRouter = Router();
@@ -28,7 +29,7 @@ router.get('/verify', (req, res) => {
         res.status(500).send("server error");
     }
 })
-
+router.get('/myProducts', myProducts);
 router.get('/productDetails/:id', productDetails);
 
 // homepage
@@ -57,15 +58,17 @@ router.get('/hashAll', async (req, res) => {
         const result = await pool.query(preparedStmt);
 
         for (let item of result.rows) {
-            const salt = await bcrypt.genSalt(10);
-            const Hashedpassword = await bcrypt.hash(item.password, salt)
-            preparedStmt = {
-                text: "UPDATE users \
-                        SET password = $1 \
-                        WHERE id=$2",
-                values: [Hashedpassword, item.id]
+            if (item.password === "hashed_password") {
+                const salt = await bcrypt.genSalt(10);
+                const Hashedpassword = await bcrypt.hash(item.password, salt)
+                preparedStmt = {
+                    text: "UPDATE users \
+                            SET password = $1 \
+                            WHERE id=$2",
+                    values: [Hashedpassword, item.id]
+                }
+                await pool.query(preparedStmt);
             }
-            await pool.query(preparedStmt);
         }
         res.json(result.rows);
     } catch (err) {
