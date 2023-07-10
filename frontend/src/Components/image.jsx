@@ -1,12 +1,12 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddPhotoSection = () => {
   const [file, setFile] = useState(null);
 
-  const onDrop = (acceptedFiles) => {
-    setFile(acceptedFiles[0]);
+  const onDrop = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
   };
 
   const handleUpload = async () => {
@@ -17,26 +17,27 @@ const AddPhotoSection = () => {
 
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('upload_preset', 'secondhandecommerce'); 
 
     try {
-      const response = await axios.post('/api/upload', formData);
-      console.log(response.data);
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/dewdm6hiz/image/upload', 
+        formData
+      );
+
+      const imageUrl = response.data.secure_url;
+      console.log(imageUrl);
+
+      // Save the imageUrl in your database using an API call or other suitable method
+
       setFile(null); // Reset the selected file after successful upload
     } catch (error) {
       console.error(error);
     }
   };
 
-  const dropzoneStyle = {
-    border: '2px dashed #ccc',
-    borderRadius: '5px',
-    padding: '20px',
-    cursor: 'pointer',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '200px',
-    outline: 'none',
+  const handleRemove = () => {
+    setFile(null);
   };
 
   const addImageTextStyle = {
@@ -44,43 +45,31 @@ const AddPhotoSection = () => {
     flexDirection: 'column',
     alignItems: 'center',
     color: '#999',
-  };
-
-  const uploadButtonStyle = {
-    marginTop: '10px',
-    backgroundColor: '#f0f0f0',
-    color: '#666',
-    padding: '8px 20px',
-    border: 'none',
-    borderRadius: '4px',
-    fontSize: '14px',
     cursor: 'pointer',
   };
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <div
-        style={dropzoneStyle}
-        onDrop={onDrop}
-        accept="image/*"
-      >
-        <div style={{ width: '100%', height: '100%' }}>
-          {file ? (
+      <div style={{ marginBottom: '10px' }}>
+        <input type="file" onChange={onDrop} accept="image/*" />
+      </div>
+      <div>
+        {file ? (
+          <div>
             <img
               style={{ maxWidth: '100%', maxHeight: '100%' }}
               src={URL.createObjectURL(file)}
               alt="Preview"
             />
-          ) : (
-            <div style={addImageTextStyle}>
-              <p>Drag and drop an image here, or click to select a file</p>
-            </div>
-          )}
-        </div>
+            <button onClick={handleRemove}>Remove</button>
+          </div>
+        ) : (
+          <div style={addImageTextStyle}>
+            <p>Drag and drop an image here, or click to select a file</p>
+          </div>
+        )}
       </div>
-      <button style={uploadButtonStyle} onClick={handleUpload}>
-        Upload
-      </button>
+      <button onClick={handleUpload}>Upload</button>
     </div>
   );
 };

@@ -1,0 +1,34 @@
+.item-profile {
+    align-items: center;
+    border-color: rgb(187, 186, 186);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 1%;
+    color: rgb(155, 149, 149);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    transition-property: scale,border-color;
+    transition-duration: 0.5s;
+}
+
+.item-profile:hover
+{
+    scale: 1.05;
+    border-color: rgb(91, 88, 88);
+}
+
+.item-profile .tag {
+    display: inline-block;
+    background-color: lightgray;
+    color: rgb(113, 108, 108);
+    border-radius: 10%;
+    padding: 5px;
+}
+
+.item-profile img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}

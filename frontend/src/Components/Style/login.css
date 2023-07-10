@@ -1,85 +1,148 @@
-.main{
+.main h1 {
   text-align: center;
-  justify-content: center;
-  display: flex;
-  padding-top: 250px;
-  padding-bottom: 90px;
-  background-color: 0079FF;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-style: italic;
+  color: #DBE2EF;
 }
-.sub-main{
+
+.main {
   display: flex;
   justify-content: center;
-  height:500px;
+  align-items: center;
+  flex-direction: column;
+  background-color: #DBE2EF;
+  min-height: 100vh;
+}
+
+.sub-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
   width: 40%;
-  box-shadow: 11px 12px 13px 12px rgb(rgb(234, 164, 164), green, blue);
-  padding-top: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 30px;
   border-radius: 60px;
-  background-color:rgb(201, 247, 84);
+  background-color: #3F72AF;
+  margin-bottom: auto;
+  margin-top: auto;
 }
-.imgs{
-  padding-top: 20px;
-  border:black;
-  justify-content: center;
+
+.imgs {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px; /* Increased margin-bottom for spacing */
+  flex: 1;
 }
+
 .container-image {
-  background-color: rgb(222, 188, 188); 
+  background-color: white;
   border-radius: 150px;
   align-items: center;
   display: flex;
   justify-content: center;
   height: 120px;
-  width: 115px;
+  width: 120px;
+  margin-right: 40px;
 }
+
 .profile {
   height: 100px;
   width: 100px;
   border-radius: 130px;
-} 
-
-.main input{
-    width: 300px;
-    height: 50px;
-    border-radius: 60px;
-    box-shadow: inset 0px 0px 25px 0px #888;
-    border: none;
-    outline: none;
-    background-color: #ceadad;
 }
 
-.user-name{
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    padding: 14px 0 0 55px;
+.main input {
+  width: 300px;
+  height: 50px;
+  border-radius: 60px;
+  box-shadow: inset 0px 0px 25px 0px #888;
+  border: none;
+  outline: none;
+  background-color: white;
+  margin-bottom: 20px; 
+  margin-left: 7px;/* Increased margin-bottom for spacing */
 }
 
-.name{
-    padding-left: 70px;
-    font-size: 20px;
-}
-.second-input{
-    padding-top: 10px;
+.user-name {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  padding: 14px 0 0 55px;
 }
 
-.main button{
-    width: 380px;
-    height: 50px;
-    border-radius: 60px;
-    background-color: #d7acea;
-    color: white;
-    font-size: 25px;
-    border: none;
+.name {
+  padding-left: 70px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
-.button{
+
+.second-input {
+  padding-top: 10px;
+}
+
+.login-button {
+  width: 450px;
+  height: 50px;
+  border-radius: 60px;
+  background-color: #112D4E;
+  color: white;
+  font-size: 25px;
+  border: none;
   margin-top: 20px;
-    padding-top: 5px;
+  font-style: bold;
+}
+.link {
+  font-size: 25px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+.link a {
+  margin-right: 10px; /* Increased margin-right for spacing between links */
+}
+.linkb {
+  margin-left: 10px; /* Increased margin-right for spacing between links */
 }
 
-.link{
-    font-size: 25px;
-    font-weight: 400;
+.main a {
+  color: white;
 }
- a{
-     color: blue;
- }
+
+@media (max-width: 1200px) {
+  .sub-main {
+    width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .sub-main {
+    width: 60%;
+  }
+
+  .main input, .main button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sub-main {
+    width: 70%;
+  }
+}
+
+@media (max-width: 576px) {
+  .sub-main {
+    width: 80%;
+  }
+
+  .main input, .main button {
+    font-size: 18px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+}

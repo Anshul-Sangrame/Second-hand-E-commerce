@@ -1,29 +1,38 @@
 import './App.css';
+import './Components/Style/font.css'
 import { Route, Routes } from 'react-router-dom';
 import Home from './Components/home';
 import Login from './Components/Login';
 import Register from './Components/register';
-// import Footer from './Components/footer';
-import { Public,Private } from './Authentication/Auth';
+import { Public, Private } from './Authentication/Auth';
 import Product from './Components/productDetails';
+import Navbar from './Components/nav';
+import SideBar from './Components/sidebar';
 import EditProfile from './Components/EditProfile';
-// import Cart from './Components/cart'
+import MyProduct from './Components/myProduct';
+
 function App() {
   return (
-      <Routes>
-        {/* Public routes */}
-        <Route element={<Public />} >
-          <Route index element={<Login />} />
-          <Route path='signUp' element={<Register />} />
-        </Route>
+    <Routes>
+      {/* Public routes */}
+      <Route element={<Public />} >
+        <Route index element={<Login />} />
+        <Route path='signUp' element={<Register />} />
+      </Route>
 
-        {/* Private routes */}
-        <Route element={<Private />}>
-          <Route path='home' element={<Home />} />
-          <Route path='product/:id' element={<Product />} />
-          <Route path='editprofile' element={<EditProfile />} />
+      {/* Private routes */}
+      <Route element={<Private />}>
+        <Route element={<Navbar />} >
+          <Route element={<SideBar />}>
+            <Route path='home' element={<Home />} />
+            <Route path='product/:id' element={<Product />} />
+            <Route path='editProfile' element={<EditProfile />} />
+            <Route path='myProduct' element={<MyProduct />} />
+            <Route path='addProduct' element={<h1>addProduct under maintaniance</h1>} />
+          </Route>
         </Route>
-      </Routes>
+      </Route>
+    </Routes>
   );
 }
 

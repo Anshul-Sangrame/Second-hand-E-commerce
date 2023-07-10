@@ -1,9 +1,15 @@
-nav {
+.nav-flex
+{
+  display: flex;
+  flex-direction: column;
+}
+.nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
+    /* background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172); */
+    background-color: #112D4E;
     background-size: 180% 180%;
     animation: gradient-animation 30s ease infinite;
     overflow: hidden;
@@ -13,13 +19,19 @@ nav {
     font-style: big-caslon;
     font-size: 1.6rem;
     margin-right: 20px;
+    color: white;
   }
-  
+  .navlogo:hover
+  {
+    color: orange;
+  }
+
   .navprofile {
     font-style: sans-serif;
     font-size: 1.6rem;
     margin-left: 20px;
     cursor: pointer;
+    color: white;
   }
   
   .search-bar {
@@ -32,7 +44,7 @@ nav {
   .search-bar input[type="text"] {
     padding: 13px;
     border: none;
-    width: 500px;
+    /* width: 500px; */
     border-radius: 10px;
     margin-right: 20px;
   }

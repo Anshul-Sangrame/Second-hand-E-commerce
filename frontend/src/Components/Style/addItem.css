@@ -1,0 +1,30 @@
+
+.add-Item
+{
+    /* variable */
+    --color: #A2FF86;
+    /* flex */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* border */
+    border-color: var(--color);
+    border-style: outset;
+    border-width: 5px;
+
+    /* transition */
+    transition-property: scale,border-color, color;
+    transition-duration: 0.5s;
+    /* font */
+    font-size: 10rem;
+    color: var(--color);
+}
+
+.add-Item:hover
+{
+    /* var */
+    --color: #3F72AF;
+    /* size */
+    scale: 1.05;
+}

@@ -1,67 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Vollkorn+SC&display=swap');
+
 .product-details {
     /* flex */
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 40px;
 
     /* spacing */
     margin: 20px;
-}
+    /* margin-left: 25rem; */
 
-.product-details > *
-{
-    /* flex-item */
-    flex-grow: 0;
-    flex-shrink: 1;
-    flex-basis: 400px;
+    /* color */
+    color: #495464;
+
+    /* font */
+    font-family: 'Lato', sans-serif;
 }
 
 .product-details .photo {
     /* flex */
     display: flex;
-    justify-content: flex-end;
-    
-    /* flex-self */
-    flex-basis: 600px;
-    
-    /* dimension */
-    height: 600px;
-}
+    justify-content: center;
 
-.product-details .photo > img
-{
-    /* size */
-    width: 100%;
+    /* flex-self */
+    flex-grow: 2;
+    flex-shrink: 2;
+    flex-basis: 0;
+
+    /* space */
+    padding: 8rem 0;
+
+    /* color */
+    background-color: #F4F4F2;
+
     /* border */
-    border-radius: 15px;
-    border-width: 0.5px;
     border-style: solid;
     border-color: #BBBFCA;
+    border-width: 0.5px;
+}
+
+
+
+.product-details .photo-bg {
+    /* flex */
+    display: flex;
+    justify-content: center;
+    /* color */
+    background-color: white;
+
+    /* space */
+    padding: 2rem 2rem 4rem 2rem;
+
+    /* border */
+    box-shadow: 0 0.4rem 0.2rem 0.2rem #BBBFCA;
+}
+
+.product-details .photo-bg > img {
+    /* size  */
+    width: 450px;
+    aspect-ratio: 1/1.2;
+    /* border */
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: #495464;
     /* fitting */
     object-fit: fill;
 }
 
-.product-details .details
-{
-    /* flex */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 2rem;
+.product-details .details {
+    /* flex-self */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
 }
 
-.product-details .details > *
-{
-    /* border */
-    border-radius: 1px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #BBBFCA;
-
+.product-details .head {
     /* space */
-    padding: 20px;
+    margin-top: 10rem;
+}
+
+.product-details h1 {
+    font-family: 'Vollkorn SC', serif;
 }
 
 .product-details .tag
@@ -70,62 +90,111 @@
     display: inline-block;
     /* color */
     background-color: #BBBFCA;
-    color: #495464;
     /* space */
     padding: 5px;
+    margin-top: 1rem;
     /* border */
     border-radius: 5px;
 
 }
 
-.product-details .addToCart{
+.product-details .btns
+{
     /* flex */
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    /* Font */
-    font-size: 1.5rem;
-    /* color */
-    background-color: white;
+    gap: 2rem;
+
+    /* space */
+    margin-top: 1rem;
 }
 
-.product-details .addToCart > button
+.product-details .btns > *
 {
-    /* space */
-    padding: 10px;
-
+    /* flex-self */
+    flex-grow: 1;
+    flex-basis: 0;
     /* font */
-    font-size: 1rem;
+    font-size: 1.5rem;
 
-    /* color */
-    background-color: #0F4C75;
-    color: white;
+    /* space */
+    padding: 0.75rem;
 
     /* border */
     border: none;
     border-radius: 10px;
-}
 
-.product-details .addToCart > button:hover
+    /* color */
+    background-color: #0F4C75;
+    color: white;
+}
+.product-details .btns > *:hover
 {
     /* color */
     background-color: #BBE1FA;
     color: black;
 }
 
-@media (max-width: 700px) {
+.product-details hr
+{
+    /* space */
+    margin: 1rem 0;
+
+    /* color */
+    color: #E8E8E8;
+}
+
+.product-details .qty
+{
+    /* font */
+    font-size: 1.5rem;
+}
+
+.product-details p
+{
+    /* color */
+    color: #7a7b7d;
+}
+
+@media (max-width: 1000px) {
+    .product-details
+    {
+        /* flex */
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .product-details .head
+    {
+        margin: 0;
+    }
     .product-details .photo
     {
-        /* flex-self */
-        flex-basis: 300px;
-        /* size */
-        height: 300px;
+        /* space */
+        padding: 0;
+        width: 70%;
+    }
+    .product-details .photo-bg
+    {
+        padding: 0;
+        width: 100%;
     }
 
-    .product-details .details
+    .product-details .photo-bg > img
     {
-        /* flex-self */
-        flex-basis: 300px;
+        /* size */
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+}
+
+@media (max-width: 500px) {
+    .product-details .photo
+    {
+        width: auto;
+    }
+    .product-details .photo-bg > img
+    {
+        /* size */
+        width: 20rem;
     }
 }
