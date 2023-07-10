@@ -2,6 +2,7 @@ import { Router } from "express";
 import VerifyToken from "../controllers/verifyToken.js";
 import login from "../controllers/login.js";
 import register from "../controllers/register.js";
+import {EditProfileGet, EditProfilePost} from "../controllers/EditProfile.js";
 import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
 import productDetails from "../controllers/productDetails.js";
@@ -14,6 +15,8 @@ router.use(VerifyToken);
 // routes
 router.post('/login', login)
 router.post('/register', register)
+router.get('/editprofile',EditProfileGet);
+router.post('/editprofile',EditProfilePost);
 router.post('/register', async (req, res) => { register.Register(req, res) });
 router.get('/verify', (req, res) => {
     try {

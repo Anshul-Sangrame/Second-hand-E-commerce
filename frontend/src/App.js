@@ -3,9 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Components/home';
 import Login from './Components/Login';
 import Register from './Components/register';
+// import Footer from './Components/footer';
 import { Public,Private } from './Authentication/Auth';
 import Product from './Components/productDetails';
-
+import EditProfile from './Components/EditProfile';
+// import Cart from './Components/cart'
 function App() {
   return (
       <Routes>
@@ -19,6 +21,7 @@ function App() {
         <Route element={<Private />}>
           <Route path='home' element={<Home />} />
           <Route path='product/:id' element={<Product />} />
+          <Route path='editprofile' element={<EditProfile />} />
         </Route>
       </Routes>
   );

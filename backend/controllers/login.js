@@ -8,7 +8,6 @@ export default async function login(req,res)
         /* 
         req.body = {username,password}
         */
-
         const {email:email, password:password} = req.body;
         const preparedStmt = {
             text: "Select id,password from users \

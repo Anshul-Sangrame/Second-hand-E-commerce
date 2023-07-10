@@ -2,8 +2,8 @@ import pool from "../database/db.js"
 
 export default async function productDetails(req,res)
 {
-    try {
-
+   try {
+    
         if (!req.user_id)
         {
             return res.json({data:null})
