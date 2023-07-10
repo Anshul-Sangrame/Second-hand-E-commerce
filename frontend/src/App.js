@@ -28,7 +28,7 @@ function App() {
             <Route path='product/:id' element={<Product />} />
             <Route path='editProfile' element={<EditProfile />} />
             <Route path='myProduct' element={<MyProduct />} />
-            <Route path='addProduct' element={<h1>addProduct under maintaniance</h1>} />
+            {/* <Route path='addProduct' element={<h1>addProduct under maintaniance</h1>} /> */}
           </Route>
         </Route>
       </Route>
