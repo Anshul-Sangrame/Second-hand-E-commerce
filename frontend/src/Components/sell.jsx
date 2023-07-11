@@ -1,12 +1,12 @@
 import React from "react";
 import AddPhotoSection from "./image";
-import "./sellstyle.css";
+import "./Style/sellstyle.css";
 function Sell(){
     return <div className="sell">
         <div className="sell-card">
         <div className="sellmain">
       <h1>About</h1>
-      <p>Tell the world all about your item and why they’ll love it.</p>
+      <p>Tell the world all about your item and why they'll love it.</p>
         </div>
      <div className="selltitle">
         <h2>Title*</h2>

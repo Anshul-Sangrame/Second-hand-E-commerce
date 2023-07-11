@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 const AddPhotoSection = () => {
   const [file, setFile] = useState(null);
@@ -20,17 +20,17 @@ const AddPhotoSection = () => {
     formData.append('upload_preset', 'secondhandecommerce'); 
 
     try {
-      const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/dewdm6hiz/image/upload', 
-        formData
-      );
+      // const response = await axios.post(
+      //   'https://api.cloudinary.com/v1_1/dewdm6hiz/image/upload', 
+      //   formData
+      // );
 
-      const imageUrl = response.data.secure_url;
-      console.log(imageUrl);
+      // const imageUrl = response.data.secure_url;
+      // console.log(imageUrl);
 
-      // Save the imageUrl in your database using an API call or other suitable method
+      // // Save the imageUrl in your database using an API call or other suitable method
 
-      setFile(null); // Reset the selected file after successful upload
+      // setFile(null); // Reset the selected file after successful upload
     } catch (error) {
       console.error(error);
     }
