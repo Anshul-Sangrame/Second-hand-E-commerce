@@ -7,6 +7,7 @@ import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
 import productDetails from "../controllers/productDetails.js";
 import myProducts from "../controllers/myProduct.js";
+import sell from "../controllers/sell.jsx";
 
 const router = Router();
 export const publicRouter = Router();
@@ -18,6 +19,7 @@ router.use(VerifyToken);
 publicRouter.post('/login', login)
 publicRouter.post('/register', register)
 // Private
+router.post('/sell', SellPost);
 router.get('/editprofile', EditProfileGet)
 router.post('/editprofile', EditProfilePost)
 router.post('/register', async (req, res) => { register.Register(req, res) });
