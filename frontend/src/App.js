@@ -30,7 +30,7 @@ function App() {
             <Route path='editProfile' element={<EditProfile />} />
             <Route path='myProduct' element={<MyProduct />} />
             <Route path='addProduct' element={<Sell />} />
-            <Route path='test' element={<Sell />} />
+            {/* <Route path='test' element={<Sell />} /> */}
           </Route>
         </Route>
       </Route>
