@@ -1,7 +1,6 @@
 import pool from "../database/db.js";
-import cloudinary from 'cloudinary';
-import express from 'express';
-const app = express();
+import multer from 'multer';
+import cloudinary from 'cloudinary').v2;
 
 // Configure Cloudinary
 cloudinary.config({
@@ -10,9 +9,14 @@ cloudinary.config({
   api_secret: 'OPHyVY8I2N21CLcjG-tsRFAU7Cg'
 });
 
-export default async function Sell(req, res) {
+const upload = multer({});//it handles the file handling //it is necessary to include this 
+
+app.use(express.json());
+app.use(express.static('public'));
+
+export default async function sell(req, res) {
   try {
-    if (!req.body.file) {
+    if (!req.file) {
       return res.status(400).json({ error: 'No file selected' });
     }
 
@@ -22,11 +26,25 @@ export default async function Sell(req, res) {
     // Retrieve the Cloudinary image URL
     const imageUrl = result.secure_url;
 
-    const { product } = req.body;
-    // Save the product details to your database, including the imageUrl
+    // Saving  the image URL to our database
+    // Performing the necessary operations to store the imageUrl in our database
+
+    const { title, description, tags, cost, qty } = req.body;
+
+    const product = {
+      title,
+      description,
+      tags,
+      cost,
+      qty,
+      image_url: imageUrl, // Use the image URL received from the frontend
+    };
+
+    // Save the product details to your database
+    // ...
     const query =
       'INSERT INTO products (title, description, tags, cost, qty, image_url) VALUES ($1, $2, $3, $4, $5, $6)';
-    const values = [product.title, product.description, product.tags, product.cost, product.qty, imageUrl];
+    const values = [product.title, product.description, product.tags, product.cost, product.qty, product.image_url];
 
     await pool.query(query, values);
 
