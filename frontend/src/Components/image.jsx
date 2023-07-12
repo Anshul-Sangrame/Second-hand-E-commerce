@@ -1,43 +1,37 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 
-const AddPhotoSection = () => {
-  const [file, setFile] = useState(null);
+const AddPhotoSection = ({ setFile }) => {
+  const [previewUrl, setPreviewUrl] = useState("");
 
-  const onDrop = (event) => {
+  const onDrop = async (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
-  };
+    setPreviewUrl(URL.createObjectURL(selectedFile));
 
-  const handleUpload = async () => {
-    if (!file) {
-      console.log('No file selected');
-      return;
-    }
-
+    // Create a FormData object to store the image file
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'secondhandecommerce'); 
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", "rqrxlnpn");//this is the upload preset for cloudinary where the image would be stored
 
     try {
-      // const response = await axios.post(
-      //   'https://api.cloudinary.com/v1_1/dewdm6hiz/image/upload', 
-      //   formData
-      // );
+      // Make a POST request to Cloudinary upload API
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dewdm6hiz/image/upload",
+        formData
+      );
 
-      // const imageUrl = response.data.secure_url;
-      // console.log(imageUrl);
-
-      // // Save the imageUrl in your database using an API call or other suitable method
-
-      // setFile(null); // Reset the selected file after successful upload
+      // Access the image URL from the response and do something with it
+      const imageUrl = response.data.secure_url;
+      console.log("Image uploaded:", imageUrl);
     } catch (error) {
-      console.error(error);
+      console.error("Error uploading image:", error);
     }
   };
 
   const handleRemove = () => {
     setFile(null);
+    setPreviewUrl(null);
   };
 
   const addImageTextStyle = {
@@ -54,24 +48,24 @@ const AddPhotoSection = () => {
         <input type="file" onChange={onDrop} accept="image/*" />
       </div>
       <div>
-        {file ? (
+        {previewUrl ? (
           <div>
             <img
               style={{ maxWidth: '100%', maxHeight: '100%' }}
-              src={URL.createObjectURL(file)}
+              src={previewUrl}
               alt="Preview"
             />
             <button onClick={handleRemove}>Remove</button>
           </div>
         ) : (
           <div style={addImageTextStyle}>
-            <p>Drag and drop an image here, or click to select a file</p>
+            <p>Click to add an image</p>
           </div>
         )}
       </div>
-      <button onClick={handleUpload}>Upload</button>
     </div>
   );
 };
 
 export default AddPhotoSection;
+
