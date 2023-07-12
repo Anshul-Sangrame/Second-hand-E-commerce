@@ -18,8 +18,7 @@ import { useNavigate } from 'react-router-dom'
 function AddItem() {
     const nav = useNavigate();
 
-    function handleClick()
-    {
+    function handleClick() {
         nav('/addProduct');
     }
 
@@ -52,6 +51,14 @@ export default function MyProduct() {
         }
     };
 
+    async function handleDelete() {
+
+    }
+
+    async function handleEdit() {
+
+    }
+
     useEffect(() => {
         getData();
     }, []);
@@ -61,7 +68,14 @@ export default function MyProduct() {
     return (
         <div className="my-product">
             <AddItem />
-            {data.map(item => <ItemProfile key={item.id} details={item} />)}
+            {data.map(item =>
+                <ItemProfile
+                    key={item.id}
+                    details={item}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                />
+            )}
         </div>
     )
 }

@@ -104,6 +104,7 @@ function Sell() {
             />
           </div>
           <div className="sellprice">
+
             <h3>Price*</h3>
             <span className="rupee-symbol">&#8377;</span>
             <input
