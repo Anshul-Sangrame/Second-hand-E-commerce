@@ -9,6 +9,7 @@ import productDetails from "../controllers/productDetails.js";
 import myProducts from "../controllers/myProduct.js";
 import Sell from "../controllers/sell.js";
 import multer from  'multer'
+import deleteItem from "../controllers/deleteItem.js";
 
 
 const router = Router();
@@ -34,6 +35,7 @@ publicRouter.post('/login', login)
 publicRouter.post('/register', register)
 // Private
 router.post('/sell',upload.single('file'), Sell);
+router.delete('/deleteItem',deleteItem);
 router.get('/editprofile', EditProfileGet)
 router.post('/editprofile', EditProfilePost)
 router.post('/register', async (req, res) => { register.Register(req, res) });

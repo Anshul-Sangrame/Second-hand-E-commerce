@@ -12,12 +12,12 @@ export function ItemProfile({ details, onDelete, onEdit }) {
 
     function handleEdit(e) {
         e.stopPropagation();
-        onEdit();
+        onEdit(details.id);
     }
 
     function handleDelete(e) {
         e.stopPropagation();
-        onDelete();
+        onDelete(details.id);
     }
 
     return (

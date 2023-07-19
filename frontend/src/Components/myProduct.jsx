@@ -31,6 +31,7 @@ function AddItem() {
 
 export default function MyProduct() {
     const [data, setData] = useState(null)
+    const [updated, setUpdated] = useState(false);
     async function getData() {
         try {
             const token = sessionStorage.getItem('token')
@@ -51,17 +52,41 @@ export default function MyProduct() {
         }
     };
 
-    async function handleDelete() {
-
+    async function handleDelete(id) {
+        try {
+            const body = {id: id};
+            const token = sessionStorage.getItem('token');
+            const res = await fetch(`${process.env.REACT_APP_baseURL}/deleteItem`,{
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: token,
+                },
+                body: JSON.stringify(body),
+            })
+            if (res.ok)
+            {
+                alert('item deleted');
+                setUpdated(!updated);
+            }
+            else
+            {
+                const msg = await res.text();
+                alert(msg);
+            }
+        } catch (err) {
+            console.error(err.message);
+        }
     }
 
-    async function handleEdit() {
+    async function handleEdit(e) {
 
     }
 
     useEffect(() => {
+        console.log("fetched data")
         getData();
-    }, []);
+    }, [updated]);
 
     if (!data) return <></>
 
