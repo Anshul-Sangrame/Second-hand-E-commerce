@@ -22,7 +22,6 @@ function AddItem() {
     {
         nav('/addProduct');
     }
-
     return (
         <div className="add-Item" onClick={handleClick}>
             <FontAwesomeIcon icon={faPlus} />

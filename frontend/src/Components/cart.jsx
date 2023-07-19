@@ -1,24 +1,103 @@
-import {useState} from 'react';
-import './Style/cart.css'
-export default function Cart(){
-   
-    let array=[{title: "cotton T-shirt"},{title: "red skirt"}];
+import {useState, useEffect} from 'react';
+import './Style/cart.css';
+import { ItemProfile } from './item-profile'
+export default  function Cart(){
+    const [product,setproductDetails] = useState([]);
+    const [change,setchange] = useState(null);
+    useEffect (() => {const cart_details = async () =>{
+        try{
+            const token = sessionStorage.getItem('token')
+            const response = await fetch(`${process.env.REACT_APP_baseURL}/mycart`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                token: token
+                },
+            })
+            if(response.ok)
+            {   
+                const productDetails =await response.json();
+                setproductDetails(productDetails);
+                console.log(productDetails);
+            }
+        }
+        catch(err){
+            console.log(err.message);
+        }
+    }
+        cart_details()
+    },[change]);
+
+    if(!product)
+        return(<></>)
+    
     return(
-    <>
-    <h3>SHOPPING CART</h3> 
+    <div className="shopping-cart">
+    <h2>SHOPPING CART </h2> 
     <div className='cart-items'>
-    {array.map((value,index1) => < ButtonDisplay  key={index1} title={value.title} index={index1} my={index1}/>)}
+    <ul>
+    {product.map((value,id) => <li key={value.id}><ButtonDisplay  details={value} index={value.id} change={change} setchange={setchange} /> </li>)}
+    <button className='pay'>PAY NOW</button>
+    </ul>
     </div>
-    </>
-)}
-function ButtonDisplay({title,index}){
-    const [count,setCount]= useState(1);
+    </div>
+    )}
+    function ButtonDisplay({details, setchange,index}){
+           const [count,setCount]= useState(details.qty);
+           async function setqty(update_qty,index){
+           //setcount is updating the value of count asynchronously....
+            let cart_item={qty:update_qty,product_id:index,select:"qty"};
+            // setchange("Q");
+            
+            try{
+            const token = sessionStorage.getItem('token')
+            setCount(update_qty);
+            const response = await fetch(`${process.env.REACT_APP_baseURL}/mycart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    token:token
+                },
+                body: JSON.stringify(cart_item)        
+                
+            })
+            if(response.ok)
+                {
+                    console.log("quantity updated");             
+                } 
+           }   
+            catch(err){
+            console.log(err);
+           }     
+        }
+    async function delete_item(id){
+        setchange("D");
+        try {
+            var body = {id:id};
+            const token = sessionStorage.getItem('token')
+            const response = await fetch(`${process.env.REACT_APP_baseURL}/mycart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: token
+                },
+                body: JSON.stringify(body)
+            })
+            if (response.ok) {
+                console.log("done");
+            }
+        }
+        catch (err) {
+            console.error(err.message)
+        }
+    }
     return(
     <>
-    {/* <h4>Cotton T-shirt</h4> */}
-    <h4>{title}</h4>
-    <button onClick={()=>{if(count>1) setCount(count-1) ; else setCount(1)  }}>-</button><button >{count}</button><button width="" onClick={()=>{setCount(count+1)}}>+</button>
-    <button ><img src="https://img.favpng.com/19/7/1/delete-button-png-favpng-nNzUqv3qzzzH3cqYQhDRfPLQz.jpg" alt="delete" width="10px" height="10px"/></button>
-    <br/>
+    {/* <h4>{details.title}</h4> */}
+    <ItemProfile className="pic" key={index} details={details} />
+    {/* <img src={details.image_url} alt="img" width="5%"/> */}
+    <button className="qty" onClick={()=>{if(count>1) setqty(count-1,index); else setqty(1,index)}}>-</button><button className='count'>{count}</button><button className="qty" width="" onClick={()=>{setqty(count+1,index)}}>+</button><span className='cost'>Total Cost:  Rs {details.cost*count}</span> 
+    <button  className="delete" onClick={()=>{delete_item(index)}}><img src="https://img.favpng.com/19/7/1/delete-button-png-favpng-nNzUqv3qzzzH3cqYQhDRfPLQz.jpg" alt="delete" width="80%" height="60%"/></button>
     </>
-)}
+)
+}

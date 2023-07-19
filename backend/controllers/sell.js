@@ -1,6 +1,6 @@
 import pool from "../database/db.js";
 import multer from 'multer';
-import cloudinary from 'cloudinary').v2;
+import cloudinary from 'cloudinary';
 
 // Configure Cloudinary
 cloudinary.config({

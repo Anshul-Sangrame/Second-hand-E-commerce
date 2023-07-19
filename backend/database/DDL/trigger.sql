@@ -1,16 +1,15 @@
 CREATE OR REPLACE FUNCTION total_cart_items() RETURNS trigger AS $total_cart_items$
 DECLARE 
 total_items int;
-
 BEGIN
     select count(*) into total_items from carts where carts.user_id = NEW.user_id;
-    IF(total_items=5) THEN
-        rollback;
-    ELSIF (total_items<5) THEN
+    IF (total_items<5) THEN
        return NEW;
+    ELSE 
+        rollback;
     END IF;
-
 END;
+
 $total_cart_items$ LANGUAGE plpgsql; 
 
 CREATE OR REPLACE TRIGGER total_cart_items 

@@ -3,11 +3,11 @@ import bcrypt from "bcrypt";
 
  async function EditProfileGet(req,res) {
         
-        const CustomerEditDetails  = req.body;  
         let  Query;
+    
+         
         try{
             Query = await pool.query("select first_name, last_name, email,phone, city,state, address from users where id=$1 ",[req.user_id]);
-          //   console.log(Query.rows[0]);
             return res.json(Query.rows[0]);
        }
        catch(err){

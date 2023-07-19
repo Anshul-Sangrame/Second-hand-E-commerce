@@ -148,7 +148,7 @@ export default function Register() {
         <div>
             <input type="submit" value="REGISTER" className="submit" />
         </div>
-        <a href="/login">Already registered? Login here</a>
+        <a href="/">Already registered? Login here</a>
         </form>
     </div>
     )
