@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
-const AddPhotoSection = ({ setFile }) => {
+const AddPhotoSection = ({ setFile,disabled }) => {
   const [previewUrl, setPreviewUrl] = useState("");
 
   const onDrop = async (event) => {
@@ -27,7 +27,7 @@ const AddPhotoSection = ({ setFile }) => {
   //   } catch (error) {
   //     console.error("Error uploading image:", error);
   //   }
-  // };
+  };
 
   const handleRemove = () => {
     setFile(null);
@@ -45,7 +45,7 @@ const AddPhotoSection = ({ setFile }) => {
   return (
     <div style={{ textAlign: 'center' }}>
       <div style={{ marginBottom: '10px' }}>
-        <input type="file" onChange={onDrop} accept="image/*" />
+        <input type="file" disabled={disabled} onChange={onDrop} accept="image/*" />
       </div>
       <div>
         {previewUrl ? (
@@ -66,6 +66,6 @@ const AddPhotoSection = ({ setFile }) => {
     </div>
   );
 };
-}
+
 
 export default AddPhotoSection;
