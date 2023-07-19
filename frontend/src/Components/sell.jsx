@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import AddPhotoSection from './image';
 import './Style/sellstyle.css';
 import { useNavigate } from 'react-router-dom';
+import Load from './loading';
+
+function jsonToFormData(obj) {
+  const formData = new FormData();
+  for (const key in obj) {
+    formData.append(key, obj[key]);
+  }
+  return formData;
+}
 
 function Sell() {
   const [product, setProduct] = useState({
@@ -12,6 +21,8 @@ function Sell() {
     qty: '',
     tags: ''
   });
+
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,25 +35,25 @@ function Sell() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      console.log(product);
+      const formData = jsonToFormData(product);
       const token = sessionStorage.getItem('token');
-      const response = await fetch("http://localhost:5000/sell", {
+      setLoading(true);
+      const response = await fetch(`${process.env.REACT_APP_baseURL}/sell`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           token: token
         },
-        body: JSON.stringify(product)
+        body: formData,
       });
-
+      setLoading(false);
       if (response.ok) {
-        console.log("Product uploaded successfully");
-        navigate('/success'); // Replace '/success' with the desired route after successful upload
+        alert("Product uploaded successfully");
+        navigate('/home');
       } else {
-        const errorData = await response.json();
-        console.log("Product upload failed:", errorData);
+        const errorData = await response.text();
+        alert(errorData);
       }
     } catch (err) {
       console.error("An error occurred while uploading the product:", err.message);
@@ -68,6 +79,7 @@ function Sell() {
             <h2>Title*</h2>
             <p>Enter the title that best suits your item</p>
             <input
+              disabled={loading}
               type="text"
               placeholder="Enter your title"
               onChange={handleChange}
@@ -81,6 +93,7 @@ function Sell() {
               What makes your item special? Buyers will only see the first few lines unless they expand the description
             </p>
             <input
+              disabled={loading}
               type="text"
               placeholder="Enter your Description"
               onChange={handleChange}
@@ -90,12 +103,13 @@ function Sell() {
           </div>
           <div className="sellimage">
             <h2>Add Photo*</h2>
-            <AddPhotoSection file={product.file} setFile={handleFileChange} />
+            <AddPhotoSection disabled={loading} file={product.file} setFile={handleFileChange} />
           </div>
           <div className="selltags">
             <h2>Tags*</h2>
             <p>Add tags to help people search for your product</p>
             <input
+              disabled={loading}
               type="text"
               placeholder="Shape, colour, style, function, etc"
               onChange={handleChange}
@@ -107,6 +121,7 @@ function Sell() {
             <h3>Price*</h3>
             <span className="rupee-symbol">&#8377;</span>
             <input
+              disabled={loading}
               type="text"
               placeholder=""
               onChange={handleChange}
@@ -118,6 +133,7 @@ function Sell() {
             <h3>Quantity*</h3>
             <p>Enter</p>
             <input
+              disabled={loading}
               type="text"
               placeholder=".."
               onChange={handleChange}
@@ -127,6 +143,7 @@ function Sell() {
           </div>
           <div className="sellupload">
             <button type="submit">Upload</button>
+            {loading && <Load width="40px" height="40px" />}
           </div>
         </form>
       </div>

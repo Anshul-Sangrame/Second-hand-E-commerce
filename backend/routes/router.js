@@ -7,10 +7,24 @@ import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
 import productDetails from "../controllers/productDetails.js";
 import myProducts from "../controllers/myProduct.js";
-import sell from "../controllers/sell.jsx";
+import Sell from "../controllers/sell.js";
+import multer from  'multer'
+
 
 const router = Router();
 export const publicRouter = Router();
+
+// multer config
+const storage = multer.diskStorage({
+    destination: "./uploads",
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Math.round(Math.random() * 1E9)
+      const extension = file.mimetype.split('/')[1];
+      cb(null, file.fieldname + "-" + req.user_id + "." + extension);
+    }
+  })
+
+const upload = multer({storage: storage});
 
 // Verifies JWT tokens
 router.use(VerifyToken);
@@ -19,7 +33,7 @@ router.use(VerifyToken);
 publicRouter.post('/login', login)
 publicRouter.post('/register', register)
 // Private
-router.post('/sell', SellPost);
+router.post('/sell',upload.single('file'), Sell);
 router.get('/editprofile', EditProfileGet)
 router.post('/editprofile', EditProfilePost)
 router.post('/register', async (req, res) => { register.Register(req, res) });
@@ -51,7 +65,7 @@ router.get('/home', async (req, res) => {
 
 // testing
 
-router.get('/hashAll', async (req, res) => {
+publicRouter.get('/hashAll', async (req, res) => {
     try {
         let preparedStmt = {
             text: "SELECT id,password from users"
