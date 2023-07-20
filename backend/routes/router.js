@@ -3,6 +3,7 @@ import VerifyToken from "../controllers/verifyToken.js";
 import login from "../controllers/login.js";
 import register from "../controllers/register.js";
 import { EditProfileGet, EditProfilePost } from "../controllers/EditProfile.js";
+import {Cartget, Cartpost } from '../controllers/cart.js';
 import pool from "../database/db.js";
 import bcrypt from 'bcrypt'
 import productDetails from "../controllers/productDetails.js";
@@ -34,6 +35,8 @@ router.use(VerifyToken);
 publicRouter.post('/login', login)
 publicRouter.post('/register', register)
 // Private
+router.get('/mycart',Cartget);
+router.post('/mycart',Cartpost);
 router.post('/sell',upload.single('file'), Sell);
 router.delete('/deleteItem',deleteItem);
 router.get('/editprofile', EditProfileGet)

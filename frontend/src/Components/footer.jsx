@@ -17,7 +17,6 @@ return(
     <li>wx21btech110yz@iith.ac.in 
     </li>
  </ul>
- 
 <ul>
 <li class="third"><h3>Team Members</h3></li>
 <li>xyz</li>

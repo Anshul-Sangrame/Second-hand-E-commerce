@@ -24,7 +24,6 @@ VALUES
    ('Dyson V11 Absolute', 'Cordless stick vacuum cleaner with powerful suction', 'Home', 599, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZj_l8OXsfL5V5bj5BIFloDn8qbIR4jTtvUw&usqp=CAU', 50, 0, 9),
    ('Sony PlayStation 5', 'Next-generation gaming console by Sony', 'Gaming', 499, 'https://5.imimg.com/data5/SELLER/Default/2022/2/KZ/UE/IS/146215056/sony-playstation-5-ps5-console-disc-version-1-year-warranty-by-sony-500x500-1--500x500.jpeg', 60, 0, 10);
 
-
 INSERT INTO views (user_id, product_id)
 VALUES
    (1, 3),

@@ -10,6 +10,7 @@ import Navbar from './Components/nav';
 import SideBar from './Components/sidebar';
 import EditProfile from './Components/EditProfile';
 import MyProduct from './Components/myProduct';
+import Cart from './Components/cart';
 import Sell from './Components/sell';
 
 function App() {
@@ -22,12 +23,13 @@ function App() {
       </Route>
 
       {/* Private routes */}
+    
       <Route element={<Private />}>
         <Route element={<Navbar />} >
           <Route element={<SideBar />}>
             <Route path='home' element={<Home />} />
             <Route path='product/:id' element={<Product />} />
-            <Route path='editProfile' element={<EditProfile />} />
+            <Route path='editProfile' element={<Cart />} />
             <Route path='myProduct' element={<MyProduct />} />
             <Route path='addProduct' element={<Sell />} />
             <Route path='test' element={<Sell />} />

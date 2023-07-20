@@ -29,8 +29,7 @@ export default function Product() {
                         token: token
                     }
                 })
-
-                if (res.ok) {
+            if (res.ok) {
                     const parsedData = await res.json();
                     setData(parsedData.data);
                 }
