@@ -29,9 +29,10 @@ function App() {
           <Route element={<SideBar />}>
             <Route path='home' element={<Home />} />
             <Route path='product/:id' element={<Product />} />
-            <Route path='editProfile' element={<Cart />} />
+            <Route path='editProfile' element={<EditProfile />} />
             <Route path='myProduct' element={<MyProduct />} />
             <Route path='addProduct' element={<Sell />} />
+            <Route path='mycart' element={<Cart />} />
             <Route path='test' element={<Sell />} />
           </Route>
         </Route>
