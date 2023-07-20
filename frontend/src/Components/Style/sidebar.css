@@ -59,7 +59,21 @@
     /* flex */
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.2rem;
+    /* flex self */
+    align-self: stretch;
+}
+
+.side-bar hr
+{
+    /* border */
+    border: none;
+
+    /* height */
+    height: 2px;
+
+    /* background */
+    background-color: #BBBFCA; /* #E8E8E8, #BBBFCA, #7a7b7d */
 }
 
 .side-bar button {
@@ -73,6 +87,8 @@
 
     /* border */
     border: none;
+
+    padding: 1rem 0 1rem 0;
 
     /* size */
     width: 100%;

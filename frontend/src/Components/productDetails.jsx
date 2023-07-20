@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import './Style/productDetails.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag, faEye, faIndianRupeeSign, faX } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faEye, faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from "react";
-import Modal from "./Modal";
+import Modal from "./AddCartModal";
 
 export default function Product() {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
+    // Timer
     useEffect(() => {
         const interval_id = setTimeout(() => {
             console.log("10 sec passed");
@@ -20,11 +21,7 @@ export default function Product() {
         }
     }, [])
 
-    function onClose() {
-        setShowModal(false);
-        document.body.style.overflow = '';
-    }
-
+    // Fetching data
     useEffect(() => {
         const getData = async () => {
             try {
@@ -48,19 +45,16 @@ export default function Product() {
         getData()
     }, [id]);
 
+    // If data is null
     if (!data) return <></>;
-
 
     return (
         <div className="product-details">
-            <Modal showModal={showModal} onClose={onClose}>
-                <div className={`addCartPopUp${showModal? " show" :""}`}>
-                    <FontAwesomeIcon onClick={onClose} icon={faX} />
-                    <div className="AddCartcontent">
-                        hello
-                    </div>
-                </div>
-            </Modal>
+            <Modal
+                showModal={showModal}
+                data={data}
+                setShowModal={setShowModal}
+            />
             <div className="photo">
                 <div className="photo-bg">
                     <img src={data.image_url} alt={data.title} />
@@ -78,7 +72,14 @@ export default function Product() {
                     </div>
                     <div className="tag">{data.tag}</div>
                     <div className="btns">
-                        <button onClick={() => setShowModal(true)}>Add to Cart</button>
+                        <button
+                            onClick={() => {
+                                setShowModal(true);
+                                document.body.style.overflow = 'hidden';
+                            }}
+                        >
+                            Add to Cart
+                        </button>
                         <button>Buy Now</button>
                     </div>
                     <hr />
