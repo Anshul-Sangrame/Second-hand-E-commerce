@@ -155,6 +155,40 @@
     color: #7a7b7d;
 }
 
+.modal-container .addCartPopUp
+{
+    /* display */
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+
+    /* background */
+    background-color: white;
+
+    /* size */
+    flex-basis: 0;
+
+    /* space */
+    padding: 20px 0 20px 0;
+
+    /* overflow */
+    overflow: hidden;
+
+    /* transition */
+    transition: flex-basis ease-in-out 0.5s, padding ease-in-out 0.5s;
+
+    /* border */
+    /* box-shadow: 0 0.4rem 0.2rem 0.2rem #BBBFCA; */
+}
+
+.modal-container .addCartPopUp.show
+{
+    /* flex */
+    flex-basis: 15rem;
+    /* space */
+    padding: 20px;
+}
+
 @media (max-width: 1000px) {
     .product-details
     {

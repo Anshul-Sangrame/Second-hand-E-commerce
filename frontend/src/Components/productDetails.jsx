@@ -1,22 +1,29 @@
 import { useParams } from "react-router-dom";
 import './Style/productDetails.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag, faEye, faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faEye, faIndianRupeeSign, faX } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 export default function Product() {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        const interval_id = setTimeout(()=>{
+        const interval_id = setTimeout(() => {
             console.log("10 sec passed");
             // increment the view here
-        },1000*10);
-        return () =>{
+        }, 1000 * 10);
+        return () => {
             clearTimeout(interval_id);
         }
-    },[])
+    }, [])
+
+    function onClose() {
+        setShowModal(false);
+        document.body.style.overflow = '';
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -29,7 +36,7 @@ export default function Product() {
                         token: token
                     }
                 })
-            if (res.ok) {
+                if (res.ok) {
                     const parsedData = await res.json();
                     setData(parsedData.data);
                 }
@@ -46,6 +53,14 @@ export default function Product() {
 
     return (
         <div className="product-details">
+            <Modal showModal={showModal} onClose={onClose}>
+                <div className={`addCartPopUp${showModal? " show" :""}`}>
+                    <FontAwesomeIcon onClick={onClose} icon={faX} />
+                    <div className="AddCartcontent">
+                        hello
+                    </div>
+                </div>
+            </Modal>
             <div className="photo">
                 <div className="photo-bg">
                     <img src={data.image_url} alt={data.title} />
@@ -63,7 +78,7 @@ export default function Product() {
                     </div>
                     <div className="tag">{data.tag}</div>
                     <div className="btns">
-                        <button>Add to Cart</button>
+                        <button onClick={() => setShowModal(true)}>Add to Cart</button>
                         <button>Buy Now</button>
                     </div>
                     <hr />
