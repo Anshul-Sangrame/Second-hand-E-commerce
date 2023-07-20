@@ -23,9 +23,9 @@
   text-align: center;
   left: 50%;
   align-items: center;
-  height: 40%;
-  width: 30%;
-  background-color: rgb(153, 149, 187);
+  height: 60%;
+  width: 50%;
+ background-color: rgba(166, 164, 179,0.6);
   box-shadow: 0px 0px 10px rgba(37, 33, 33, 0.5);
   padding: 30px;
   border-radius: 7px;
