@@ -50,15 +50,21 @@ export default function SideBar() {
         <div className="side-bar-container">
             <div className={"side-bar" + (!showSB ? " invisible" : "")} style={{ "--height": h + "px" }} >
                 <div className="content" ref={contentRef}>
+                    <hr />
                     <HighlightedButton myPath="/home">
                         <FontAwesomeIcon icon={faHouse} size="xs" /> Home
                     </HighlightedButton>
+                    <hr />
+                    <hr />
                     <HighlightedButton myPath="/editProfile">
                         <FontAwesomeIcon icon={faUser} size="xs" /> Profile
                     </HighlightedButton>
+                    <hr />
+                    <hr />
                     <HighlightedButton myPath="/myProduct">
                         <FontAwesomeIcon icon={faIndianRupeeSign} size="xs" /> Sell
                     </HighlightedButton>
+                    <hr />
                 </div>
             </div>
             <Outlet />
