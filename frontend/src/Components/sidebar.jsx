@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import './Style/sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faUser, faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faUser, faIndianRupeeSign, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from "react";
 
 function HighlightedButton({ myPath, children }) {
@@ -63,6 +63,11 @@ export default function SideBar() {
                     <hr />
                     <HighlightedButton myPath="/myProduct">
                         <FontAwesomeIcon icon={faIndianRupeeSign} size="xs" /> Sell
+                    </HighlightedButton>
+                    <hr />
+                    <hr />
+                    <HighlightedButton myPath="/mycart">
+                        <FontAwesomeIcon icon={faCartShopping} size="xs" /> Cart
                     </HighlightedButton>
                     <hr />
                 </div>

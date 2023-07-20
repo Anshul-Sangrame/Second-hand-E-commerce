@@ -53,7 +53,7 @@ export default function Modal({ data, setShowModal, showModal }) {
 
             if (res.ok)
             {
-                nav('/home');
+                nav('/mycart');
             }
         } catch (err) {
             console.log(err.message);
