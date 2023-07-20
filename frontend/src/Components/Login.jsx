@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import profile from "./images/loginp.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faLock } from "@fortawesome/free-solid-svg-icons";
 import './Style/login.css'
@@ -51,10 +50,6 @@ function Login() {
       <div className="sub-main">
         <div>
           <div className="imgs">
-            <div className="container-image">
-              <img src={profile} alt="profile" className="profile" />
-
-            </div>
           </div>
           <div>
             <h1>Login to your account</h1>
@@ -77,3 +72,4 @@ function Login() {
   );
 };
 export default Login;
+
