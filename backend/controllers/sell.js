@@ -6,7 +6,7 @@ import pkg from 'pg';
 const { DatabaseError } = pkg;
 
 
-// // Configure Cloudinary (Harsh's details exposed, upload all kinds of bikini)
+// // Configure Cloudinary 
 // cloudinary.config({
 //   cloud_name: 'dewdm6hiz',
 //   api_key: '687984954841828',
