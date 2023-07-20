@@ -33,7 +33,7 @@
     /* flex-self */
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: 10rem;
+    flex-basis: 15rem;
 
     /* color */
     background-color: #112D4E;
@@ -44,7 +44,7 @@
     border-width: 0 0.5px 0 0;
 
     /* transition */
-    transition: flex-basis 1s ease, margin 1s ease;
+    transition: flex-basis 0.5s ease, margin 0.5s ease;
 }
 
 .side-bar.invisible {
@@ -76,6 +76,8 @@
 
     /* size */
     width: 100%;
+    /* text-wrap */
+    white-space: nowrap;
 }
 
 .side-bar button:hover {
@@ -83,7 +85,7 @@
     color: orange;
 }
 
-@media (max-width: 530px) {
+@media (max-width: 630px) {
     .side-bar-container {
         /* flex */
         flex-direction: column;
@@ -102,7 +104,7 @@
         margin: 0;
 
         /* transition */
-        transition: flex-basis 1s ease;
+        transition: flex-basis 0.5s ease;
 
         /* flex-self */
         flex-basis: var(--height);

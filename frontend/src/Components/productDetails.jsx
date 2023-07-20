@@ -9,6 +9,16 @@ export default function Product() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
+        const interval_id = setTimeout(()=>{
+            console.log("10 sec passed");
+            // increment the view here
+        },1000*10);
+        return () =>{
+            clearTimeout(interval_id);
+        }
+    },[])
+
+    useEffect(() => {
         const getData = async () => {
             try {
                 const token = sessionStorage.getItem('token');

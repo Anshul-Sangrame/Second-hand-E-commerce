@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS products(
     tag varchar(20),
     cost INTEGER,
     image_url VARCHAR(255),
+    public_id VARCHAR(255),
     qty INTEGER CHECK(qty >= 0),
     views INT DEFAULT 0,
-    owner_id INT REFERENCES users(id)
+    owner_id INT REFERENCES users(id) ON DELETE CASCADE
 );

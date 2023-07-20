@@ -23,13 +23,13 @@ export default function EditProfile() {
                 })
                 if (response.ok) {
                     const userDetailsget = await response.json();
-                    console.log("user details recieved");
-                    console.log(userDetailsget);
+                    // console.log("user details recieved");
+                    // console.log(userDetailsget);
                     setUserEditDetails(userDetailsget);
                 }
             }
             catch (err) {
-                console.log("user details not recieved");
+                // console.log("user details not recieved");
                 console.error(err.message)
             }
         }
