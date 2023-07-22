@@ -40,8 +40,8 @@
 }
 .shopping-cart .qty,.shopping-cart .delete{
     border-radius: 0.3vw;
-    margin-left: 2px;
-    margin-right: 1px;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
     margin-top: 1vh;
     /* background-color: #fff; */
 }

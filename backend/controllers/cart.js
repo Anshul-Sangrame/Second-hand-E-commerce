@@ -17,10 +17,12 @@ async function Cartpost(req,res){
            
             Query = await  pool.query("update carts set qty=$1 where user_id =$2 and product_id=$3 RETURNING *",[req.body.qty,req.user_id,req.body.product_id]);
             console.log(Query.rows[0]);
+            res.send('ok');
         }
         catch(err)
         {
             console.log(err);
+            res.status(500).send('server error');
         }
     }
     else{
@@ -29,13 +31,14 @@ async function Cartpost(req,res){
             console.log(req.body.id+"id");
             Query = await pool.query("delete from carts where user_id=$1 and product_id =$2",[req.user_id,req.body.id]);
             console.log("DELETED");
+            res.send('ok');
         }
         catch(err)
         {
             console.log(err);
+            res.status(500).send('server error');
         }
     }
     
 }
 export {Cartpost,Cartget}
-
