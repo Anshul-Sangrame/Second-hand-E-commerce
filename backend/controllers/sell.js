@@ -1,57 +1,63 @@
 import pool from "../database/db.js";
-import multer from 'multer';
-import cloudinary from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary'
+import 'dotenv/config'
+import { unlinkSync } from 'node:fs';
+import pkg from 'pg';
+const { DatabaseError } = pkg;
 
-// Configure Cloudinary
+
+// // Configure Cloudinary 
+// cloudinary.config({
+//   cloud_name: 'dewdm6hiz',
+//   api_key: '687984954841828',
+//   api_secret: 'OPHyVY8I2N21CLcjG-tsRFAU7Cg'
+// });
+
 cloudinary.config({
-  cloud_name: 'dewdm6hiz',
-  api_key: '687984954841828',
-  api_secret: 'OPHyVY8I2N21CLcjG-tsRFAU7Cg'
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+  secure: true,
 });
 
-const upload = multer({});//it handles the file handling //it is necessary to include this 
-
-app.use(express.json());
-app.use(express.static('public'));
-
-export default async function sell(req, res) {
+export default async function Sell(req, res) {
   try {
-    if (!req.file) {
-      return res.status(400).json({ error: 'No file selected' });
+    const product = req.body;
+
+    const options = {
+      folder: 'second-e-commerce',
     }
 
-    // Upload the image to Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path);
+    if (!req.file) {
+      res.status(401).send("no valid image");
+      return
+    }
 
-    // Retrieve the Cloudinary image URL
-    const imageUrl = result.secure_url;
+    const img = await cloudinary.uploader.upload(req.file.path, options);
 
-    // Saving  the image URL to our database
-    // Performing the necessary operations to store the imageUrl in our database
+    const image_url = img.secure_url;
+    const public_id = img.public_id;
 
-    const { title, description, tags, cost, qty } = req.body;
-
-    const product = {
-      title,
-      description,
-      tags,
-      cost,
-      qty,
-      image_url: imageUrl, // Use the image URL received from the frontend
-    };
-
-    // Save the product details to your database
-    // ...
+    // Save the product details to your database, including the imageUrl and public id
     const query =
-      'INSERT INTO products (title, description, tags, cost, qty, image_url) VALUES ($1, $2, $3, $4, $5, $6)';
-    const values = [product.title, product.description, product.tags, product.cost, product.qty, product.image_url];
-
+      'INSERT INTO products (title, description, tag, cost, qty, image_url, public_id, owner_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+    const values = [product.title, product.description, product.tags, product.cost, product.qty, image_url, public_id, req.user_id];
     await pool.query(query, values);
-
-    console.log('Product inserted successfully');
-    res.json({ message: 'Product inserted successfully' });
-  } catch (error) {
-    console.error('Error inserting product:', error);
-    res.status(500).json({ error: 'An error occurred' });
+    res.send("Done");
+  } catch (err) {
+    
+    if (err instanceof DatabaseError) {
+      console.error(err.message);
+      res.status(401).send(err.message);
+    }
+    else {
+      console.error(err.message);
+      res.status(500).send("server error");
+    }
+  }
+  finally {
+    if (req.file && req.file.path) {
+      unlinkSync(req.file.path);
+    }
   }
 }

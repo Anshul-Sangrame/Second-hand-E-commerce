@@ -1,5 +1,7 @@
 import { Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import './Style/sidebar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faUser, faIndianRupeeSign, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from "react";
 
 function HighlightedButton({ myPath, children }) {
@@ -48,9 +50,26 @@ export default function SideBar() {
         <div className="side-bar-container">
             <div className={"side-bar" + (!showSB ? " invisible" : "")} style={{ "--height": h + "px" }} >
                 <div className="content" ref={contentRef}>
-                    <HighlightedButton myPath="/home">Home</HighlightedButton>
-                    <HighlightedButton myPath="/editProfile">Profile</HighlightedButton>
-                    <HighlightedButton myPath="/myProduct">Sell</HighlightedButton>
+                    <hr />
+                    <HighlightedButton myPath="/home">
+                        <FontAwesomeIcon icon={faHouse} size="xs" /> Home
+                    </HighlightedButton>
+                    <hr />
+                    <hr />
+                    <HighlightedButton myPath="/editProfile">
+                        <FontAwesomeIcon icon={faUser} size="xs" /> Profile
+                    </HighlightedButton>
+                    <hr />
+                    <hr />
+                    <HighlightedButton myPath="/myProduct">
+                        <FontAwesomeIcon icon={faIndianRupeeSign} size="xs" /> Sell
+                    </HighlightedButton>
+                    <hr />
+                    <hr />
+                    <HighlightedButton myPath="/mycart">
+                        <FontAwesomeIcon icon={faCartShopping} size="xs" /> Cart
+                    </HighlightedButton>
+                    <hr />
                 </div>
             </div>
             <Outlet />

@@ -1,0 +1,172 @@
+.modal-container {
+    /* display */
+    display: flex;
+    justify-content: flex-end;
+
+    /* position */
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    /* background */
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* size */
+    width: 100%;
+    height: 100%;
+
+    /* opacity */
+    opacity: 0;
+    pointer-events: none;
+
+    /* transition */
+    transition: opacity ease-in-out 0.5s;
+}
+
+.modal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-container .addCartPopUp {
+    /* flex */
+    display: flex;
+
+    /* background */
+    background-color: white;
+
+    /* size */
+    flex-basis: 0;
+
+    /* font */
+    font-size: 1.5rem;
+    color: #495464;
+
+    /* wrap */
+    white-space: nowrap;
+
+    /* overflow */
+    overflow: hidden;
+
+    /* transition */
+    transition: flex-basis ease-in-out 0.5s;
+}
+
+.modal-container .container {
+    /* display */
+    display: flex;
+    flex-direction: column;
+
+    /* space */
+    padding: 20px;
+
+    /* size */
+    flex-grow: 1;
+}
+
+.modal-container .addCartPopUp.show {
+    /* flex self */
+    flex-basis: 600px;
+}
+
+.modal-container .AddCartcontent {
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* flex self */
+    flex-grow: 1;
+}
+
+.modal-container .AddCartcontent input[type="number"] {
+    width: 5rem;
+    font-size: inherit;
+}
+
+.modal-container .AddCartcontent img {
+    /* size  */
+    width: 70px;
+    aspect-ratio: 1/1.2;
+    /* space */
+    padding: 10px;
+    /* color */
+    background-color: #E8E8E8;
+    /* border */
+    border-style:ridge;
+    border-color: #BBBFCA;
+}
+
+.modal-container .addCartPopUp hr {
+    /* size */
+    width: 100%;
+    height: 2px;
+    /* color */
+    background-color: #BBBFCA;
+    /* remove border */
+    border: none;
+}
+
+.modal-container .addCartPopUp button
+{
+    /* space */
+    padding: 0.75rem;
+
+    /* border */
+    border: none;
+    border-radius: 10px;
+
+    /* font */
+    font-size: inherit;
+
+    /* color */
+    background-color: #0F4C75;
+    color: white;
+}
+
+.modal-container .addCartPopUp button:hover
+{
+    /* color */
+    background-color: #BBE1FA;
+    color: black;
+}
+
+.modal-container .addCartPopUp .cross {
+    /* self flex */
+    align-self: flex-start;
+}
+
+.modal-container .addCartPopUp .cross:hover {
+    /* color */
+    color: orange;
+}
+
+.modal-container .AddCartcontent .details {
+    /* flex */
+    display: flex;
+    gap: 10px;
+}
+
+.modal-container .AddCartcontent .det {
+    /* flex */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.modal-container .AddCartcontent h3 {
+    /* font */
+    font-family: 'Vollkorn SC', serif;
+}
+
+@media (max-width: 600px) {
+    .modal-container {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    .modal-container .addCartPopUp {
+        /* wrap */
+        white-space: normal;
+    }
+}

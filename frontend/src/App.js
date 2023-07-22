@@ -11,6 +11,8 @@ import SideBar from './Components/sidebar';
 import EditProfile from './Components/EditProfile';
 import MyProduct from './Components/myProduct';
 import Cart from './Components/cart';
+import Sell from './Components/sell';
+
 function App() {
   return (
     <Routes>
@@ -27,9 +29,11 @@ function App() {
           <Route element={<SideBar />}>
             <Route path='home' element={<Home />} />
             <Route path='product/:id' element={<Product />} />
-            <Route path='editProfile' element={<Cart />} />
+            <Route path='editProfile' element={<EditProfile />} />
             <Route path='myProduct' element={<MyProduct />} />
-            <Route path='addProduct' element={<h1>addProduct under maintaniance</h1>} />
+            <Route path='addProduct' element={<Sell />} />
+            <Route path='mycart' element={<Cart />} />
+            <Route path='test' element={<Sell />} />
           </Route>
         </Route>
       </Route>

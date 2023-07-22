@@ -33,3 +33,17 @@
     width: 100%;
     object-fit: cover;
 }
+
+.item-profile .buttons
+{
+    /* flex */
+    display: flex;
+    justify-content: space-between;
+    /* flex-self */
+    align-self: stretch;
+}
+
+.item-profile .buttons > *:hover
+{
+    scale: 1.3;
+}
