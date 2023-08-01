@@ -1,10 +1,10 @@
 import { Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import './Style/sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faUser, faIndianRupeeSign, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faUser, faIndianRupeeSign, faCartShopping, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from "react";
 
-function HighlightedButton({ myPath, children }) {
+function HighlightedButton({ myPath, children, logout }) {
     const loc = useLocation();
     const nav = useNavigate();
     const path = loc.pathname;
@@ -15,6 +15,9 @@ function HighlightedButton({ myPath, children }) {
 
     const styleColor = { color: 'orange' };
     const handleClick = function () {
+        if (logout) {
+            sessionStorage.removeItem('token');
+        }
         nav(`${myPath}`);
     };
 
@@ -68,6 +71,11 @@ export default function SideBar() {
                     <hr />
                     <HighlightedButton myPath="/mycart">
                         <FontAwesomeIcon icon={faCartShopping} size="xs" /> Cart
+                    </HighlightedButton>
+                    <hr />
+                    <hr />
+                    <HighlightedButton myPath="/" logout={true}>
+                        <FontAwesomeIcon icon={faRightFromBracket} size="xs" /> Log Out
                     </HighlightedButton>
                     <hr />
                 </div>

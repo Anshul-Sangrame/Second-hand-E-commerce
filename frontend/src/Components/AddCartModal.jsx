@@ -70,8 +70,7 @@ export default function Modal({ data, setShowModal, showModal }) {
                 setQTY(1);
             }
             else {
-                console.log(val);
-                setQTY(val);
+                setQTY(val.toString());
             }
         }
         else {
