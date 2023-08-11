@@ -1,3 +1,7 @@
+*{
+    margin:0px;
+    padding:0px;
+}
 footer{
     width:100vw;
     height:18vh;
@@ -5,24 +9,26 @@ footer{
     flex-direction:row;
     color:#ffffff;
     background-color: #112D4E;
- }
+    position:relative;
+    left:0px;
+    bottom:0vh;
+    }
  footer ul{
      display:flex;
      flex-direction:column;
      width:30vw;  
-     list-style: none;;
-     
+     list-style: none;;     
  }
  footer li{
      padding: 3px 30px;
      font-size:0.5em;
-     /* padding-bottom:4px; */
+     padding-bottom:4px; 
      font-weight: medium;
+     font-size:small;
   
  }
- 
  .first, .second, .third{
-     color:#eb57b7;
+     color:#d42196;
      font-weight:700;
-    
+    font-size:medium;
  }

@@ -1,6 +1,6 @@
-import './footer.css'
+import './Style/footer.css';
 
-export default function footer(){
+export default function Footer(){
 return(
 <footer>
 <ul>
@@ -22,7 +22,7 @@ return(
 <li>xyz</li>
 <li>xvy</li>
 <li>xyz</li>
- </ul> 
+</ul> 
 </footer>
 )
 }

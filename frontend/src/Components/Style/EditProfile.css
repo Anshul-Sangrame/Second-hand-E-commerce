@@ -5,7 +5,9 @@
 .EditProfile
 {
     display: flex;
-    justify-content: center;
+    width:100vw;
+    /*justify-content: center; */
+    align-items: center;
 }
 .EditProfile header{
  height:10vh;
@@ -14,14 +16,13 @@
  border-color:rgb(170, 167, 167);
 }
 .EditProfile .editProfile-main{
-    border-style:solid;
-    border-color:rgb(170, 167, 167);
-    border-width:2px;
-    /* margin-left:15vw; */
-    width:85vw;
+    /*border-color:rgb(170, 167, 167);
+    border-width:2px; */
+    margin-left:15vw;
+    width:70vw;
     height:110vh;
 }
-.EditProfile h2{
+.EditProfile h1{
     margin-left:10vw;
     margin-top:10vh;
     margin-bottom: 10vh;
@@ -35,8 +36,8 @@
 
 .EditProfile label{
     display:block;  
-    font-size:100%;
-    font-weight:500px;
+    font-size:large;
+    font-weight:bold;
 }
 
 .EditProfile form {
@@ -54,6 +55,7 @@
     padding:2px;
     border-radius:2px;
     border-width:0.5px;
+    font-size: large;
     /* background-color: #fff; */
 }
 
@@ -66,43 +68,46 @@
     margin-top:2vh;
     width:50vw;
     text-align: center;
-    border-radius:3px;
+    border-radius:1.7vh;
     border-style:solid;
     border-width:1px;
-    border-color:rgb(170, 167, 167);
-    
+    border-color:rgb(170, 167, 167);  
 }  
 
 .EditProfile .Address span{
     display:inline-block;
     height:4vh;
+    margin-bottom:1.4vh;
+    font-size: larger;
     font-weight:bold;
 }
 .EditProfile button{
-    width:20vw;
+    width:12vw;
     height:5vh;
     margin-left:25vw;
     margin-top:5vh;
     background-color:  #0F4C75;
-    border-radius:5px;
+    border-radius:1vh;
+    font-size: 1rem;
     color:white;
 }
-/* .EditProfile button:hover{
+.EditProfile button:hover{
     width:17vw;
     height:5vh;
-    margin-left:20vw;
+    margin-left:25vw;
     margin-top:5vh;
     background-color:  #0F4C75;
-    border-radius:5px;
+    border-radius:1vh;
     color:white;
+    font-size: 1rem;
     transition: width 0.5s ease-in-out;
-} */
+}
 @media (max-width: 850px){
+    
     .EditProfile h2{
         margin-left:0px;
         text-align:center;
-     }
-      
+     }  
     .EditProfile img {
         display:none;
     }

@@ -62,8 +62,8 @@ export default function EditProfile() {
         <div className='EditProfile'>
             {/* <header></header> */}
             <div className='editProfile-main' >
-                <h2>EDIT PROFILE</h2>
-                <img src='https://www.qed42.com/sites/default/files/styles/social_media/public/2022-02/Best%20Practices%20For%20eCommerce%20Website%20Design.png?itok=UiGZ73XD' alt='e-commerce' />
+                <h1>EDIT PROFILE</h1>
+                <img src='https://img.freepik.com/free-photo/online-purchasing-payment-e-commerce-banking_53876-127604.jpg?w=1380&t=st=1691746489~exp=1691747089~hmac=dcb7e54e644b0483439ca7b64f25484114ec8c94cc0cace3c06c9e95cf396813' alt='e-commerce' />
                 <form onSubmit={submitChanges}>
                     {/* e.target.name depends on the order . */}
                     <label>FIRSTNAME</label>
