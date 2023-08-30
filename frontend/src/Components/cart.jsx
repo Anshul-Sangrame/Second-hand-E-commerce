@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import './Style/cart.css';
-import { ItemProfile } from './item-profile'
+import { ItemProfile } from './item-profile';
+
 export default  function Cart(){
     const [product,setproductDetails] = useState([]);
     const [change,setchange] = useState(null);
@@ -16,7 +17,7 @@ export default  function Cart(){
             })
             if(response.ok)
             {   
-                const productDetails =await response.json();
+                let productDetails =await response.json();
                 setproductDetails(productDetails);
                 console.log(productDetails);
             }
@@ -26,14 +27,14 @@ export default  function Cart(){
         }
     }
         cart_details()
-    },[change]);
+    },[change,product]);
 
     if(!product)
         return(<></>)
-    
-    return(
-    <div className="shopping-cart">
-    <h2>SHOPPING CART </h2> 
+        // style={{marginRight: spacing + 'em'}}
+        return(
+    <div className="shopping-cart" style={{height: 40*product.length+10 + 'vh'}}>
+    <h1>SHOPPING CART </h1> 
     <div className='cart-items'>
     <ul>
     {product.map((value,id) => <li key={value.id}><ButtonDisplay  details={value} index={value.id} change={change} setchange={setchange} /> </li>)}
@@ -48,7 +49,6 @@ export default  function Cart(){
            //setcount is updating the value of count asynchronously....
             let cart_item={qty:update_qty,product_id:index,select:"qty"};
             // setchange("Q");
-            
             try{
             const token = sessionStorage.getItem('token')
             setCount(update_qty);

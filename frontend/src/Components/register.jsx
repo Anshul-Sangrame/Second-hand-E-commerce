@@ -49,6 +49,7 @@ export default function Register() {
         }
     }
     return (
+        <div className='Register-Main'>
         <div className='Registration'>
         <h2>SIGN UP</h2>
         <form onSubmit={submitForm} >
@@ -80,7 +81,7 @@ export default function Register() {
                 placeholder="Email"
                 onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
             />
-        
+            
             <label>PASSWORD</label>
             <input
                 type="password"
@@ -144,12 +145,13 @@ export default function Register() {
                 onChange={(e) => setCustomerDetails({...CustomerDetails,[e.target.name]: e.target.value})}
                 required
             />
-            {/* </div> */}
+
         <div>
             <input type="submit" value="REGISTER" className="submit" />
         </div>
         <a href="/">Already registered? Login here</a>
         </form>
+    </div>
     </div>
     )
 }

@@ -1,29 +1,37 @@
 *{
-    margin:0;
-    padding:0;
-    
+    margin:0px;
+    padding:0px;  
 }
+.Register-Main{
+    background-color:#0F4C75;
+    display:flex;
+    justify-content: space-around;
+
+}
+
 .Registration{
     margin:40px 0px;
     border-style:solid;
     border-color:rgb(117, 113, 113);
     border-width:1px;
     box-shadow:4px 4px 4px rgb(129, 128, 128);
-    margin-left:25vw;
     width:50vw;
-    height:120vh;
+    height:100vh;
+    background-color: whitesmoke;
+
 }
 .Registration h2{
     text-align:center;
-    margin-bottom: 3vh;
+    margin-bottom: 2vh;
+    margin-top:2vh;
     
 }
 .Registration label{
     display:block;
     text-align:center;
-    font-size:75%;
-    font-weight: 500px;
-    margin-bottom:2vh;
+    font-size:medium;
+    font-weight:bold;
+    /* margin-bottom:2vh; */
 }
 
 .Registration form {
@@ -31,24 +39,38 @@
     flex-direction:column;
     align-items: center;
     justify-content: center;
-
+    
 }
 .Registration input{
     height:3.0vh;
     width:30vw;
     margin-bottom:2vh;
     padding:2px;
-    border-radius:3px;
+    border-radius:5px;
     border-width:1px;
 
 }
+#region{
+    margin-top:10vh;
+}
 .Registration .submit{
     margin-top:2vh;
-    width:16vw;
+    width:15vw;
     height:5vh;
     background-color : #0F4C75; 
     color:white;
     border-radius: 7px;
+    font-size: medium;
+}
+
+.Registration .submit:hover{
+    margin-top:2vh;
+    width:19vw;
+    height:5vh;
+    background-color : #0F4C75; 
+    color:white;
+    border-radius: 7px;
+    transition: width 0.6s ease-in-out;
 }
 
 @media (max-width:700px){
@@ -56,11 +78,12 @@
     margin-left:10vw;
     margin-right:10vw;
     width:80vw;
+    min-height:fit-content;
    }
     
    .Registration input{
     width:65vw;
-}
+   }
 .Registration .submit{
     width:40vw;
 }
@@ -70,6 +93,7 @@
      margin-left:15vw;
      margin-right:15vw;
      width:70vw;
+     min-height:fit-content;
     }
      
     .Registration input{
