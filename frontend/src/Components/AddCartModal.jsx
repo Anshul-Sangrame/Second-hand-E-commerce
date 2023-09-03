@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX, faIndianRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import Cart from './cart';
+
 
 export default function Modal({ data, setShowModal, showModal }) {
     const [W, setW] = useState(0);
@@ -34,10 +36,10 @@ export default function Modal({ data, setShowModal, showModal }) {
 
     async function handleSubmit(e)
     {
-        e.preventDefault();
+        // e.preventDefault();
         try {
             const body = {
-                select: "qty",
+                select: "cart",
                 qty: qty,
                 product_id: data.id,
             };
@@ -52,11 +54,12 @@ export default function Modal({ data, setShowModal, showModal }) {
             })
 
             if (res.ok)
-            {
-                nav('/mycart');
+            {   nav('/mycart');
+                window.location.reload()
             }
         } catch (err) {
-            console.log(err.message);
+            // nav('/mycart');
+            // console.log(err.message);
         }
     }
 
@@ -70,8 +73,7 @@ export default function Modal({ data, setShowModal, showModal }) {
                 setQTY(1);
             }
             else {
-                console.log(val);
-                setQTY(val);
+                setQTY(val.toString());
             }
         }
         else {
@@ -111,7 +113,7 @@ export default function Modal({ data, setShowModal, showModal }) {
                             Quantity: <input value={qty} onBlur={handleQty} onChange={e => setQTY(e.target.value)} type="number" />
                         </div>
                         <hr style={{ "backgroundColor": "#E8E8E8" }} />
-                        <button onClick={handleSubmit}>Add to cart</button>
+                        <button onClick={handleSubmit}>Add to cart</button> *
                     </div>
                 </div>
             </div>

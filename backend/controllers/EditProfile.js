@@ -5,7 +5,6 @@ import bcrypt from "bcrypt";
         
         let  Query;
     
-         
         try{
             Query = await pool.query("select first_name, last_name, email,phone, city,state, address from users where id=$1 ",[req.user_id]);
             return res.json(Query.rows[0]);
