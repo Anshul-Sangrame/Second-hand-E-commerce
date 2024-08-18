@@ -9,7 +9,7 @@
     "redirects": [
         {
             "source": "/(.*)",
-            "destination": "/api/index.js"
+            "destination": "api/index.js"
         }
     ]
 }
