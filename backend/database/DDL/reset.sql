@@ -1,4 +1,4 @@
-\i '/home/anshul/programming/webDev/Second-hand-E-commerce/backend/database/DDL/clear.sql'
-\i '/home/anshul/programming/webDev/Second-hand-E-commerce/backend/database/DDL/entities.sql'
-\i '/home/anshul/programming/webDev/Second-hand-E-commerce/backend/database/DDL/relational_set.sql'
-\i '/home/anshul/programming/webDev/Second-hand-E-commerce/backend/database/data/insert.sql'
+\i 'DDL/clear.sql'
+\i 'DDL/entities.sql'
+\i 'DDL/relational_set.sql'
+\i 'data/insert.sql'
