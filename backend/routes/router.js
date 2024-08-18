@@ -79,7 +79,7 @@ publicRouter.get('/hashAll', async (req, res) => {
         const result = await pool.query(preparedStmt);
 
         for (let item of result.rows) {
-            if (item.password === "hashed_password") {
+            if (item.password === "password") {
                 const salt = await bcrypt.genSalt(10);
                 const Hashedpassword = await bcrypt.hash(item.password, salt)
                 preparedStmt = {
