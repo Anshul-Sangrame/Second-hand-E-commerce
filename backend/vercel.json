@@ -1,7 +1,7 @@
 {
     "functions": {
         "index.js":{
-            "memory": 3009
+            "memory": 1024
         }
     }
 }
