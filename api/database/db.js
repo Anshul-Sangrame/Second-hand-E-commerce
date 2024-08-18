@@ -8,7 +8,8 @@ const pool = new Pool ({
     password: process.env.db_password,
     host: process.env.db_hostname,
     port: process.env.db_port,
-    database: process.env.db_name
+    database: process.env.db_name,
+    ssl: true,
 })
 
 console.log(process.env.db_password);
