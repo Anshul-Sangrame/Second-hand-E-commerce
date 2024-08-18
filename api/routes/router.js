@@ -17,16 +17,16 @@ const router = Router();
 export const publicRouter = Router();
 
 // multer config
-const storage = multer.diskStorage({
-    destination: "./uploads",
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Math.round(Math.random() * 1E9)
-      const extension = file.mimetype.split('/')[1];
-      cb(null, file.fieldname + "-" + req.user_id + "." + extension);
-    }
-  })
+// const storage = multer.diskStorage({
+//     destination: "./uploads",
+//     filename: function (req, file, cb) {
+//       const uniqueSuffix = Math.round(Math.random() * 1E9)
+//       const extension = file.mimetype.split('/')[1];
+//       cb(null, file.fieldname + "-" + req.user_id + "." + extension);
+//     }
+//   })
 
-const upload = multer({storage: storage});
+// const upload = multer({storage: storage});
 
 // Verifies JWT tokens
 router.use(VerifyToken);
@@ -37,7 +37,7 @@ publicRouter.post('/register', register)
 // Private
 router.get('/mycart',Cartget);
 router.post('/mycart',Cartpost);
-router.post('/sell',upload.single('file'), Sell);
+// router.post('/sell',upload.single('file'), Sell);
 router.delete('/deleteItem',deleteItem);
 router.get('/editprofile', EditProfileGet)
 router.post('/editprofile', EditProfilePost)

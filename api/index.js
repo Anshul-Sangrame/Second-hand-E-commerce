@@ -3,7 +3,7 @@ import cors from 'cors'
 import router, { publicRouter } from './routes/router.js'
 import 'dotenv/config'
 
-export const app = express()
+const app = express()
 
 // Middlewares
 app.use(cors())
