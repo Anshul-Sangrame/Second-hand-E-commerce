@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import router, { publicRouter } from './routes/router.js'
+import router, { publicRouter } from '../routes/router.js'
 import 'dotenv/config'
 
 const app = express()
