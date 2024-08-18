@@ -1,15 +1,15 @@
 INSERT INTO users (first_name, last_name, email, password, city, state, address, phone, DOB, cart_cost)
 VALUES
-   ('John', 'Doe', 'john.doe@example.com', 'hashed_password', 'New York', 'NY', '123 Main St, Apt 4B', '1234567890', '1985-07-15', 0),
-   ('Jane', 'Smith', 'jane.smith@example.com', 'hashed_password', 'Los Angeles', 'CA', '456 Oak St, Apt 10C', '9876543210', '1990-03-22', 0),
-   ('Michael', 'Johnson', 'michaelj@example.com', 'hashed_password', 'Chicago', 'IL', '789 Elm St, Apt 7D', '5551234567', '1988-12-01', 0),
-   ('Sarah', 'Davis', 'sarah.davis@example.com', 'hashed_password', 'Miami', 'FL', '321 Pine Ave, Apt 2A', '4567890123', '1992-09-10', 0),
-   ('Emily', 'Wilson', 'emily.wilson@example.com', 'hashed_password', 'San Francisco', 'CA', '567 Broadway St, Apt 5E', '9876543219', '1995-05-18', 0),
-   ('David', 'Thompson', 'davidt@example.com', 'hashed_password', 'Seattle', 'WA', '789 Oak Lane, Apt 3C', '1234567891', '1991-11-30', 0),
-   ('Olivia', 'Anderson', 'olivia.anderson@example.com', 'hashed_password', 'Austin', 'TX', '456 Maple Ave, Apt 8D', '9876543218', '1987-04-12', 0),
-   ('William', 'Brown', 'william.brown@example.com', 'hashed_password', 'Boston', 'MA', '789 Elm St, Apt 2B', '5551234568', '1994-08-05', 0),
-   ('Sophia', 'Lee', 'sophia.lee@example.com', 'hashed_password', 'Atlanta', 'GA', '123 Oak St, Apt 6C', '4567890124', '1989-02-25', 0),
-   ('James', 'Smith', 'james.smith@example.com', 'hashed_password', 'Dallas', 'TX', '567 Pine Ave, Apt 9A', '9876543217', '1993-06-08', 0);
+   ('John', 'Doe', 'john.doe@example.com', 'password', 'New York', 'NY', '123 Main St, Apt 4B', '1234567890', '1985-07-15', 0),
+   ('Jane', 'Smith', 'jane.smith@example.com', 'password', 'Los Angeles', 'CA', '456 Oak St, Apt 10C', '9876543210', '1990-03-22', 0),
+   ('Michael', 'Johnson', 'michaelj@example.com', 'password', 'Chicago', 'IL', '789 Elm St, Apt 7D', '5551234567', '1988-12-01', 0),
+   ('Sarah', 'Davis', 'sarah.davis@example.com', 'password', 'Miami', 'FL', '321 Pine Ave, Apt 2A', '4567890123', '1992-09-10', 0),
+   ('Emily', 'Wilson', 'emily.wilson@example.com', 'password', 'San Francisco', 'CA', '567 Broadway St, Apt 5E', '9876543219', '1995-05-18', 0),
+   ('David', 'Thompson', 'davidt@example.com', 'password', 'Seattle', 'WA', '789 Oak Lane, Apt 3C', '1234567891', '1991-11-30', 0),
+   ('Olivia', 'Anderson', 'olivia.anderson@example.com', 'password', 'Austin', 'TX', '456 Maple Ave, Apt 8D', '9876543218', '1987-04-12', 0),
+   ('William', 'Brown', 'william.brown@example.com', 'password', 'Boston', 'MA', '789 Elm St, Apt 2B', '5551234568', '1994-08-05', 0),
+   ('Sophia', 'Lee', 'sophia.lee@example.com', 'password', 'Atlanta', 'GA', '123 Oak St, Apt 6C', '4567890124', '1989-02-25', 0),
+   ('James', 'Smith', 'james.smith@example.com', 'password', 'Dallas', 'TX', '567 Pine Ave, Apt 9A', '9876543217', '1993-06-08', 0);
 
 INSERT INTO products (title, description, tag, cost, image_url, qty, views, owner_id)
 VALUES
